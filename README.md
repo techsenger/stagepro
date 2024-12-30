@@ -2,6 +2,7 @@
 * [Overview](#overview)
 * [Demo](#demo)
 * [Features](#features)
+* [JavaFX Versions](#javafx)
 * [Dependencies](#dependencies)
 * [Usage](#usage)
 * [Code building](#code-building)
@@ -30,6 +31,13 @@ Key features include:
 * Dark mode support.
 * Size effect (disabled by default).
 * Only two events triggered during resizing (start and finish).
+
+Currently, shadow for Stage is not supported, as it seems there is no way to set a shadow around a Stage using JavaFX.
+It is likely that this can only be achieved using native code.
+
+# JavaFX Versions <a name="javafx"></a>
+
+Due to some bugs, use JavaFX versions 16–20, or a version of JavaFX after 24-ea+19 (see JDK-8344372).
 
 # Dependencies <a name="dependencies"></a>
 
@@ -75,6 +83,4 @@ Techsenger StagePro is licensed under the Apache License, Version 2.0.
 
 Any feedback is welcome. Besides, it would be interesting to know for what cases this project is used. It will
 help to understand the way the project should go and provide more information in documentation.
-
-
 
