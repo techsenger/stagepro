@@ -1,0 +1,99 @@
+/*
+ * Copyright 2024 Pavel Castornii.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/*
+    Author     : Pavel Castornii
+*/
+
+.stage-pro {
+    /* ... */
+    -fx-background-color: #AAAAAA, #FFFFFF;
+    -fx-padding: 1;
+    -fx-background-insets: 0, 1;
+    -fx-background-radius: 5 5 0 0, 4 4 0 0;
+    /* also see shadowSize property and its default value */
+/*    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 15, 0.5, 0, 0);*/
+}
+
+.stage-pro > .title-bar {
+    -fx-min-height: 36px;
+    -fx-max-height: 36px;
+    -fx-background-color: #CCCCCC;
+    -fx-alignment: center;
+    -fx-padding: 0 10 0 10;
+    -fx-background-radius: 4 4 0 0;
+}
+
+.stage-pro > .title-bar > .icon {
+    -fx-padding: 0 10 0 0;
+}
+
+.stage-pro > .title-bar > .title {
+    -fx-font-size: 13;
+    -fx-font-weight: bold;
+}
+
+.stage-pro > .title-bar > .button-box {
+    -fx-alignment: center;
+    -fx-spacing: 10;
+}
+
+.stage-pro > .title-bar > .button-box > .button {
+    -fx-max-width: 20;
+    -fx-max-height: 20;
+    -fx-min-width: 20;
+    -fx-min-height: 20;
+    -fx-shape: "M 10,0 A 10,10 0 1,1 10,20 A 10,10 0 1,1 10,0 Z";
+    -fx-background-insets: 0px;
+    -fx-padding: 0;
+}
+
+.stage-pro > .title-bar > .button-box > .close-button {
+    -fx-graphic: url("close-light.png");
+}
+
+.stage-pro.dark > .title-bar > .button-box > .close-button {
+    -fx-graphic: url("close-dark.png");
+}
+
+.stage-pro > .title-bar > .button-box > .minimize-button {
+    -fx-graphic: url("minimize-light.png");
+}
+
+.stage-pro.dark > .title-bar > .button-box > .minimize-button {
+    -fx-graphic: url("minimize-dark.png");
+}
+
+.stage-pro > .title-bar > .button-box > .maximize-button {
+    -fx-graphic: url("maximize-light.png");
+}
+
+.stage-pro > .title-bar > .button-box > .maximize-button:toggled {
+    -fx-graphic: url("restore-light.png");
+}
+
+.stage-pro.dark > .title-bar > .button-box > .maximize-button {
+    -fx-graphic: url("maximize-dark.png");
+}
+
+.stage-pro.dark > .title-bar > .button-box > .maximize-button:toggled {
+    -fx-graphic: url("restore-dark.png");
+}
+
+.stage-pro > .content-area {
+    /* ... */
+}
+

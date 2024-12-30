@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.techsenger.maven-root</groupId>
+        <artifactId>maven-root</artifactId>
+        <version>1.3.0</version>
+    </parent>
+
+    <groupId>com.techsenger.stagepro</groupId>
+    <artifactId>stagepro</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>StagePro</name>
+    <description>StagePro is a library for creating custom JavaFX stages with full control</description>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+        </license>
+    </licenses>
+
+    <url>https://github.com/techsenger/stagepro</url>
+
+    <scm>
+        <connection>scm:git:https://github.com/techsenger/stagepro.git</connection>
+        <developerConnection>scm:git:https://github.com/techsenger/stagepro.git</developerConnection>
+        <url>https://github.com/techsenger/stagepro</url>
+    </scm>
+
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/techsenger/stagepro/issues</url>
+    </issueManagement>
+
+    <developers>
+        <developer>
+            <id>pavel-castornii</id>
+            <name>Pavel Castornii</name>
+        </developer>
+    </developers>
+
+    <properties>
+        <maven.compiler.release>16</maven.compiler.release>
+        <javafx.version>16</javafx.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.techsenger.osp-bom</groupId>
+                <artifactId>osp-bom</artifactId>
+                <version>1.2.0</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.techsenger.stagepro</groupId>
+                <artifactId>stagepro-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-controls</artifactId>
+                <version>${javafx.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-base</artifactId>
+                <version>${javafx.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-graphics</artifactId>
+                <version>${javafx.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <modules>
+        <module>stagepro-core</module>
+        <module>stagepro-sampler</module>
+    </modules>
+</project>
+
+
