@@ -51,7 +51,6 @@ To create a standard Stage, use the code below. To explore all features, check o
 @Override
 public void start(Stage stage) {
     var controller = new StandardStageController(stage, 800, 600);
-    controller.initialize();
     var content = new VBox(...);
     controller.setContent(content);
     stage.show();
