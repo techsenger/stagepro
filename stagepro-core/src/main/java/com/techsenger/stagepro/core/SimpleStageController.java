@@ -34,7 +34,18 @@ public class SimpleStageController extends EmptyStageController {
     private final Button closeButton = new Button();
 
     public SimpleStageController(Stage stage, double width, double height) {
+        this(stage, width, height, true);
+    }
+
+    public SimpleStageController(Stage stage, double width, double height, boolean initTitleBar) {
         super(stage, width, height);
+        build();
+        bind();
+        addHandlers();
+        if (initTitleBar) {
+            getButtonBox().getChildren().add(closeButton);
+            getTitleBar().getChildren().addAll(icon, title, new Spacer(), getButtonBox());
+        }
     }
 
     public Label getIcon() {
@@ -49,36 +60,18 @@ public class SimpleStageController extends EmptyStageController {
         return closeButton;
     }
 
-    @Override
-    protected void preInitialize() {
-        getButtonBox().getChildren().add(closeButton);
-        getTitleBar().getChildren().addAll(icon, title, new Spacer(), getButtonBox());
-    }
-
-    @Override
-    protected void build() {
-        super.build();
+    private void build() {
         this.icon.getStyleClass().add("icon");
         this.title.getStyleClass().add("title");
         this.closeButton.getStyleClass().add("close-button");
         this.closeButton.setFocusTraversable(false);
     }
 
-    @Override
-    protected void bind() {
-        super.bind();
+    private void bind() {
         this.title.textProperty().bindBidirectional(getStage().titleProperty());
     }
 
-    @Override
-    protected void addHandlers() {
-        super.addHandlers();
+    private void addHandlers() {
         this.closeButton.setOnAction(e -> getStage().close());
-    }
-
-    @Override
-    protected void unbind() {
-        super.unbind();
-        this.title.textProperty().unbindBidirectional(getStage().titleProperty());
     }
 }

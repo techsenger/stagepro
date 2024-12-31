@@ -122,8 +122,7 @@ public class Sampler extends Application {
                 createSample3(),
                 createSample4(),
                 createSample5(),
-                createSample6(),
-                createSample7()
+                createSample6()
         );
     }
 
@@ -131,7 +130,6 @@ public class Sampler extends Application {
         return new Sample(1, "Empty Stage: resize handlers", () -> {
             var stage = new Stage();
             var controller = new EmptyStageController(stage, 800, 550);
-            controller.initialize();
             var button = new Button("Close");
             button.setOnAction(e -> stage.close());
             var content = new StackPane(button);
@@ -146,7 +144,6 @@ public class Sampler extends Application {
         return new Sample(2, "Simple Stage: icon and text on the left, close button on the right", () -> {
             var stage = new Stage();
             var controller = new SimpleStageController(stage, 800, 550);
-            controller.initialize();
             setIconAndText(controller);
             stage.show();
         });
@@ -156,7 +153,6 @@ public class Sampler extends Application {
         return new Sample(3, "Standard Stage: icon and text on the left, three buttons on the right", () -> {
             var stage = new Stage();
             var controller = new StandardStageController(stage, 800, 550);
-            controller.initialize();
             setIconAndText(controller);
             setStateTestContent(stage, controller);
             stage.show();
@@ -169,19 +165,13 @@ public class Sampler extends Application {
             class LeftStandardStageController extends StandardStageController {
 
                 LeftStandardStageController(Stage stage, double width, double height) {
-                    super(stage, width, height);
-                }
-
-                @Override
-                protected void preInitialize() {
-                    getMaximizeButton().setIndex(2); //don't forget!
+                    super(stage, width, height, false);
                     getButtonBox().getChildren().addAll(getCloseButton(), getMinimizeButton(), getMaximizeButton());
                     getTitleBar().getChildren().addAll(getButtonBox(), new Spacer(10), getTitle(),
                             new Spacer());
                 }
             }
             var controller = new LeftStandardStageController(stage, 800, 550);
-            controller.initialize();
             setIconAndText(controller);
             setStateTestContent(stage, controller);
             stage.show();
@@ -193,7 +183,6 @@ public class Sampler extends Application {
                 () -> {
             var stage = new Stage();
             var controller = new StandardStageController(stage, 800, 550);
-            controller.initialize();
             setIconAndText(controller);
             setStateTestContent(stage, controller);
             controller.setDarkTheme(true);
@@ -217,40 +206,15 @@ public class Sampler extends Application {
                 private final MenuBar menuBar = new MenuBar(fileMenu, editMenu, helptMenu);
 
                 LeftStandardStageController(Stage stage, double width, double height) {
-                    super(stage, width, height);
+                    super(stage, width, height, false);
                     this.menuBar.setStyle("-fx-background-color: #CCCCCC;");
-                }
-
-                @Override
-                protected void preInitialize() {
                     getButtonBox().getChildren().addAll(getMinimizeButton(), getMaximizeButton(), getCloseButton());
                     getTitleBar().getChildren().addAll(getIcon(), menuBar, new Spacer(), getButtonBox());
                 }
             }
             var controller = new LeftStandardStageController(stage, 800, 550);
-            controller.initialize();
             setIconAndText(controller);
             setStateTestContent(stage, controller);
-            stage.show();
-        });
-    }
-
-    private Sample createSample7() {
-        return new Sample(7, "Standard Stage initialize and deinitialize", () -> {
-            var stage = new Stage();
-            var controller = new StandardStageController(stage, 800, 550);
-            controller.initialize();
-            setIconAndText(controller);
-            var button = new Button("Deinitialize");
-            button.setOnAction(e -> {
-                stage.hide();
-                controller.deinitialize();
-                button.setText("Close");
-                button.setOnAction(event -> stage.close());
-                stage.setScene(new Scene(new StackPane(button)));
-                stage.show();
-            });
-            controller.setContent(new StackPane(button));
             stage.show();
         });
     }

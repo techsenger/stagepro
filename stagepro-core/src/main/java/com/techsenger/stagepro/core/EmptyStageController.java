@@ -90,10 +90,21 @@ public class EmptyStageController {
 
     private final Timeline timeline = new Timeline();
 
+    /**
+     * Calling {@link Stage#initStyle(javafx.stage.StageStyle)} on a visible stage will throw an
+     * {@link java.lang.IllegalStateException}: "Cannot set style once stage has been made visible."
+     *
+     * <p>Additionally, to remove a StagePro stage, it is necessary to call {@link Stage#hide()}.
+     * For this reason, adding a deinitialize method for the controller is unnecessary. If you need
+     * to remove this controller and use a standard JavaFX stage, simply create a new stage instance.
+     */
     public EmptyStageController(Stage stage, double width, double height) {
         this.stage = stage;
         this.width = width;
         this.height = height;
+        build();
+        addListeners();
+        addHandlers();
     }
 
     public ObjectProperty<Node> contentProperty() {
@@ -152,29 +163,7 @@ public class EmptyStageController {
         return buttonBox;
     }
 
-    public final void initialize() {
-        preInitialize();
-        build();
-        bind();
-        addListeners();
-        addHandlers();
-    }
-
-    /**
-     * Important - calling {@link Stage#initStyle(javafx.stage.StageStyle)} when stage is visible will
-     * throw {@link java.lang.IllegalStateException} : cannot set style once stage has been set visible.
-     * That's why even after deinitializing the controller it is not possible to update stage style if stage
-     * has been shown.
-     */
-    public final void deinitialize() {
-        preDeinitialize();
-        removeHandlers();
-        removeListeners();
-        unbind();
-        unbuild();
-    }
-
-    protected Stage getStage() {
+    public Stage getStage() {
         return stage;
     }
 
@@ -182,11 +171,7 @@ public class EmptyStageController {
         return resizer;
     }
 
-    protected void preInitialize() {
-
-    }
-
-    protected void build() {
+    private void build() {
         //with StageStyle.UNDECORATED resizing works slowly, besides with UNDECORATED style background bahind radius
         //corners will be visible
         this.stage.initStyle(StageStyle.TRANSPARENT);
@@ -209,11 +194,7 @@ public class EmptyStageController {
         setEmptyContent();
     }
 
-    protected void bind() {
-
-    }
-
-    protected void addListeners() {
+    private void addListeners() {
         this.content.addListener((ov, oldValue, newV) -> {
             if (newV != null) {
                 setNewContent(newV);
@@ -230,31 +211,10 @@ public class EmptyStageController {
         });
     }
 
-    protected void addHandlers() {
+    private void addHandlers() {
         this.titleBar.setOnMousePressed((event) -> this.doOnTitleBarMousePressed(event));
         this.titleBar.setOnMouseDragged((event) -> this.doOnTitleBarMouseDragged(event));
         this.titleBar.setOnMouseReleased((event) -> this.doOnTitleBarMouseReleased(event));
-    }
-
-    protected void preDeinitialize() {
-
-    }
-
-    protected void unbuild() {
-        this.resizer.deinitialize();
-        this.stage.setScene(null);
-    }
-
-    protected void unbind() {
-
-    }
-
-    protected void removeListeners() {
-
-    }
-
-    protected void removeHandlers() {
-
     }
 
     private void doOnTitleBarMousePressed(MouseEvent event) {

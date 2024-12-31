@@ -53,24 +53,23 @@ public class MaximizeButton extends Button {
      * The index of the button in button box. It is required to add/remove button according to its policy.
      * Button with index -1 will be ignored.
      */
-    private final IntegerProperty index = new SimpleIntegerProperty();
+    private final IntegerProperty index = new SimpleIntegerProperty(-1);
 
     public MaximizeButton() {
 
     }
 
-    public MaximizeButton(ResizableStatePolicy policy, int index) {
-        this(policy, index, null, null);
+    public MaximizeButton(ResizableStatePolicy policy) {
+        this(policy, null, null);
     }
 
-    public MaximizeButton(ResizableStatePolicy policy, int index, String string) {
-        this(policy, index, string, null);
+    public MaximizeButton(ResizableStatePolicy policy, String string) {
+        this(policy, string, null);
     }
 
-    public MaximizeButton(ResizableStatePolicy policy, int index, String string, Node node) {
+    public MaximizeButton(ResizableStatePolicy policy, String string, Node node) {
         super(string, node);
         this.policy.set(policy);
-        this.index.set(index);
         getStyleClass().add("maximize-button");
     }
 
@@ -86,15 +85,15 @@ public class MaximizeButton extends Button {
         this.policy.set(policy);
     }
 
-    public IntegerProperty indexProperty() {
+    IntegerProperty indexProperty() {
         return index;
     }
 
-    public int getIndex() {
+    int getIndex() {
         return index.get();
     }
 
-    public void setIndex(int index) {
+    void setIndex(int index) {
         this.index.set(index);
     }
 }

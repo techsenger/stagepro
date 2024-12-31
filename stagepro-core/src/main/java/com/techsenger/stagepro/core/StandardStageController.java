@@ -21,6 +21,8 @@ import javafx.css.PseudoClass;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.collections.ListChangeListener;
+import javafx.scene.Node;
 
 /**
  *
@@ -35,7 +37,9 @@ public class StandardStageController extends SimpleStageController {
 
     private final Button minimizeButton = new Button();
 
-    private final MaximizeButton maximizeButton = new MaximizeButton(MaximizeButton.ResizableStatePolicy.VISIBILITY, 1);
+    private final MaximizeButton maximizeButton = new MaximizeButton(MaximizeButton.ResizableStatePolicy.VISIBILITY);
+
+    private boolean buttonBoxListenerEnabled = true;
 
     private final ChangeListener<? super Boolean> stageMaximizedListener =
             (ov, oldV, newV) -> checkMaximizedState(newV);
@@ -44,7 +48,18 @@ public class StandardStageController extends SimpleStageController {
             (ov, oldV, newV) -> checkResizableState(newV);
 
     public StandardStageController(Stage stage, double width, double height) {
-        super(stage, width, height);
+        this(stage, width, height, true);
+    }
+
+    public StandardStageController(Stage stage, double width, double height, boolean initTitleBar) {
+        super(stage, width, height, false);
+        build();
+        addListeners();
+        addHandlers();
+        if (initTitleBar) {
+            getButtonBox().getChildren().addAll(minimizeButton, maximizeButton, getCloseButton());
+            getTitleBar().getChildren().addAll(getIcon(), getTitle(), new Spacer(), getButtonBox());
+        }
     }
 
     public Button getMinimizeButton() {
@@ -55,30 +70,23 @@ public class StandardStageController extends SimpleStageController {
         return maximizeButton;
     }
 
-    @Override
-    protected void preInitialize() {
-        getButtonBox().getChildren().addAll(minimizeButton, maximizeButton, getCloseButton());
-        getTitleBar().getChildren().addAll(getIcon(), getTitle(), new Spacer(), getButtonBox());
-    }
-
-    @Override
-    protected void build() {
-        super.build();
+    private void build() {
         this.minimizeButton.getStyleClass().add("minimize-button");
         checkMaximizedState(getStage().maximizedProperty().get());
-        checkResizableState(getStage().resizableProperty().get());
+        getButtonBox().getChildren().addListener((ListChangeListener<? super Node>) (e) -> {
+            if (this.buttonBoxListenerEnabled) {
+                this.maximizeButton.setIndex(getButtonBox().getChildren().indexOf(this.maximizeButton));
+                checkResizableState(getStage().isResizable());
+            }
+        });
     }
 
-    @Override
-    protected void addListeners() {
-        super.addListeners();
+    private void addListeners() {
         getStage().maximizedProperty().addListener(stageMaximizedListener);
         getStage().resizableProperty().addListener(stageResizableListener);
     }
 
-    @Override
-    protected void addHandlers() {
-        super.addHandlers();
+    private void addHandlers() {
         minimizeButton.setOnAction(e -> getStage().setIconified(true));
         maximizeButton.setOnAction(e -> getStage().setMaximized(!getStage().isMaximized()));
         getTitleBar().addEventFilter(MouseEvent.MOUSE_CLICKED, e -> {
@@ -89,22 +97,19 @@ public class StandardStageController extends SimpleStageController {
         });
     }
 
-    @Override
-    protected void removeListeners() {
-        super.removeListeners();
-        getStage().maximizedProperty().removeListener(stageMaximizedListener);
-        getStage().resizableProperty().removeListener(stageResizableListener);
-    }
-
     private void checkMaximizedState(boolean maximized) {
         maximizeButton.pseudoClassStateChanged(toggledClass, maximized);
         getResizer().disabledProperty().set(maximized);
     }
 
     private void checkResizableState(boolean resizable) {
+        if (this.maximizeButton.getIndex() == -1) {
+            return;
+        }
         if (maximizeButton.getPolicy() == MaximizeButton.ResizableStatePolicy.INTERACTIVITY) {
             maximizeButton.setDisable(!resizable);
         } else {
+            this.buttonBoxListenerEnabled = false;
             if (resizable) {
                 if (this.getMaximizeButton().getParent() != getButtonBox()) {
                     getButtonBox().getChildren().add(maximizeButton.getIndex(), maximizeButton);
@@ -114,6 +119,7 @@ public class StandardStageController extends SimpleStageController {
                     getButtonBox().getChildren().remove(maximizeButton.getIndex());
                 }
             }
+            this.buttonBoxListenerEnabled = true;
         }
         getResizer().disabledProperty().set(!resizable);
     }
