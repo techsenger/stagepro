@@ -122,7 +122,8 @@ public class Sampler extends Application {
                 createSample3(),
                 createSample4(),
                 createSample5(),
-                createSample6()
+                createSample6(),
+                createSample7()
         );
     }
 
@@ -160,7 +161,18 @@ public class Sampler extends Application {
     }
 
     private Sample createSample4() {
-        return new Sample(4, "Standard Stage: three buttons, text on the left", () -> {
+        return new Sample(4, "Standard Stage: icon and text on the left, three buttons on the right, size effect",
+                () -> {
+            var stage = new Stage();
+            var controller = new StandardStageController(stage, 800, 550);
+            setIconAndText(controller);
+            controller.setSizeEffectEnabled(true);
+            stage.show();
+        });
+    }
+
+    private Sample createSample5() {
+        return new Sample(5, "Standard Stage: three buttons, text on the left", () -> {
             var stage = new Stage();
             class LeftStandardStageController extends StandardStageController {
 
@@ -178,8 +190,8 @@ public class Sampler extends Application {
         });
     }
 
-    private Sample createSample5() {
-        return new Sample(5, "Standard Stage: icon and text on the left, three buttons on the right, dark theme",
+    private Sample createSample6() {
+        return new Sample(6, "Standard Stage: icon and text on the left, three buttons on the right, dark theme",
                 () -> {
             var stage = new Stage();
             var controller = new StandardStageController(stage, 800, 550);
@@ -192,8 +204,8 @@ public class Sampler extends Application {
         });
     }
 
-    private Sample createSample6() {
-        return new Sample(6, "Standard Stage: icon and menu on the left, three buttons on the right", () -> {
+    private Sample createSample7() {
+        return new Sample(7, "Standard Stage: icon and menu on the left, three buttons on the right", () -> {
             var stage = new Stage();
             class LeftStandardStageController extends StandardStageController {
 
