@@ -6,7 +6,7 @@
 * [Dependencies](#dependencies)
 * [Usage](#usage)
 * [Code building](#code-building)
-* [Running the Sampler](#sampler)
+* [Running Sampler](#sampler)
 * [License](#license)
 * [Feedback](#feedback)
 
@@ -65,7 +65,7 @@ To build the library use standard Git and Maven commands:
     cd stagepro
     mvn clean install
 
-# Running the Sampler <a name="sampler"></a>
+# Running Sampler <a name="sampler"></a>
 
 To run the sampler execute the following commands in the root of the project:
 
