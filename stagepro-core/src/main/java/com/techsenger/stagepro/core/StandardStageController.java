@@ -17,7 +17,6 @@
 package com.techsenger.stagepro.core;
 
 import javafx.beans.binding.Bindings;
-import javafx.css.PseudoClass;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -29,11 +28,6 @@ import javafx.scene.Node;
  * @author Pavel Castornii
  */
 public class StandardStageController extends SimpleStageController {
-
-    /**
-     * In JavaFX Button doesn't have selected class.
-     */
-    private static final PseudoClass toggledClass = PseudoClass.getPseudoClass("toggled");
 
     private final Button minimizeButton = new Button();
 
@@ -67,7 +61,6 @@ public class StandardStageController extends SimpleStageController {
 
     private void build() {
         this.minimizeButton.getStyleClass().add("minimize-button");
-        checkMaximizedState(getStage().maximizedProperty().get());
         getButtonBox().getChildren().addListener((ListChangeListener<? super Node>) (e) -> {
             if (this.buttonBoxListenerEnabled) {
                 this.maximizeButton.setIndex(getButtonBox().getChildren().indexOf(this.maximizeButton));
@@ -82,7 +75,6 @@ public class StandardStageController extends SimpleStageController {
     }
 
     private void addListeners() {
-        getStage().maximizedProperty().addListener((ov, oldV, newV) -> checkMaximizedState(newV));
         getStage().resizableProperty().addListener((ov, oldV, newV) -> checkMaximizeButton());
     }
 
@@ -95,10 +87,6 @@ public class StandardStageController extends SimpleStageController {
                 e.consume();
             }
         });
-    }
-
-    private void checkMaximizedState(boolean maximized) {
-        maximizeButton.pseudoClassStateChanged(toggledClass, maximized);
     }
 
     private void checkMaximizeButton() {

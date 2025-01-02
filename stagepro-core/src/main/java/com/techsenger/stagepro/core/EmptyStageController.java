@@ -22,6 +22,7 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.css.PseudoClass;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -45,6 +46,8 @@ import javafx.util.Duration;
  * @author Pavel Castornii
  */
 public class EmptyStageController {
+
+    private static final PseudoClass maximizedClass = PseudoClass.getPseudoClass("maximized");
 
     private final Stage stage;
 
@@ -191,6 +194,7 @@ public class EmptyStageController {
         this.contentArea.getStyleClass().add("content-area");
         this.titleBar.getStyleClass().add("title-bar");
         this.buttonBox.getStyleClass().add("button-box");
+        checkMaximizedPseudoClass(getStage().maximizedProperty().get());
         setEmptyContent();
     }
 
@@ -209,6 +213,7 @@ public class EmptyStageController {
                 this.stageBox.getStyleClass().remove("dark");
             }
         });
+        this.stage.maximizedProperty().addListener((ov, oldV, newV) -> checkMaximizedPseudoClass(newV));
     }
 
     private void addHandlers() {
@@ -365,5 +370,9 @@ public class EmptyStageController {
         }
         timeline.setCycleCount(1);
         timeline.play();
+    }
+
+    private void checkMaximizedPseudoClass(boolean maximized) {
+        this.stageBox.pseudoClassStateChanged(maximizedClass, maximized);
     }
 }

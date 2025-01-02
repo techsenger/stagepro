@@ -28,6 +28,10 @@
 /*    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 15, 0.5, 0, 0);*/
 }
 
+.stage-pro:maximized {
+    -fx-background-radius: 0, 0;
+}
+
 .stage-pro > .title-bar {
     -fx-min-height: 36px;
     -fx-max-height: 36px;
@@ -35,6 +39,10 @@
     -fx-alignment: center;
     -fx-padding: 0 10 0 10;
     -fx-background-radius: 4 4 0 0;
+}
+
+.stage-pro:maximized > .title-bar {
+    -fx-background-radius: 0;
 }
 
 .stage-pro > .title-bar > .icon {
@@ -81,7 +89,7 @@
     -fx-graphic: url("maximize-light.png");
 }
 
-.stage-pro > .title-bar > .button-box > .maximize-button:toggled {
+.stage-pro:maximized > .title-bar > .button-box > .maximize-button {
     -fx-graphic: url("restore-light.png");
 }
 
@@ -89,7 +97,7 @@
     -fx-graphic: url("maximize-dark.png");
 }
 
-.stage-pro.dark > .title-bar > .button-box > .maximize-button:toggled {
+.stage-pro:maximized.dark > .title-bar > .button-box > .maximize-button {
     -fx-graphic: url("restore-dark.png");
 }
 
