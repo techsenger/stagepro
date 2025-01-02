@@ -198,8 +198,7 @@ public class Sampler extends Application {
             setIconAndText(controller);
             setStateTestContent(stage, controller);
             controller.setDarkTheme(true);
-            stage.getScene().getRoot().getStylesheets()
-                    .add(Sampler.class.getResource("dark-theme.css").toExternalForm());
+            stage.getScene().getStylesheets().add(Sampler.class.getResource("dark-theme.css").toExternalForm());
             stage.show();
         });
     }

@@ -188,7 +188,8 @@ public class EmptyStageController {
                 (e) -> onResizingFinished(e));
         this.resizer.initialize(stage);
         VBox.setVgrow(stageBox, Priority.ALWAYS);
-        this.stageBox.getStylesheets().add(EmptyStageController.class.getResource("stage.css").toExternalForm());
+        //there are different stylesheet priorities for scene and node
+        scene.getStylesheets().add(EmptyStageController.class.getResource("stage.css").toExternalForm());
         this.stageBox.getStyleClass().add("stage-pro");
         VBox.setVgrow(this.contentArea, Priority.ALWAYS);
         this.contentArea.getStyleClass().add("content-area");
