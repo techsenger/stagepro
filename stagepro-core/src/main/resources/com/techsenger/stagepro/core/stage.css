@@ -60,13 +60,13 @@
 }
 
 .stage-pro > .title-bar > .button-box > .button {
-    -fx-max-width: 20;
-    -fx-max-height: 20;
-    -fx-min-width: 20;
-    -fx-min-height: 20;
-    -fx-shape: "M 10,0 A 10,10 0 1,1 10,20 A 10,10 0 1,1 10,0 Z";
-    -fx-background-insets: 0px;
+    -fx-min-width: 20px;
+    -fx-min-height: 20px;
+    -fx-max-width: 20px;
+    -fx-max-height: 20px;
+    -fx-background-radius: 20;
     -fx-padding: 0;
+    -fx-background-insets: 0, 0, 1, 2;
 }
 
 .stage-pro > .title-bar > .button-box > .close-button {
