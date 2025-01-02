@@ -71,6 +71,7 @@ public class MaximizeButton extends Button {
         super(string, node);
         this.policy.set(policy);
         getStyleClass().add("maximize-button");
+        setFocusTraversable(false);
     }
 
     public ObjectProperty<ResizableStatePolicy> policyProperty() {
