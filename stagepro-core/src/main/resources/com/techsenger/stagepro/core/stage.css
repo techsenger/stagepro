@@ -18,21 +18,19 @@
     Author     : Pavel Castornii
 */
 
-.stage-pro {
+.stage-box {
     /* ... */
     -fx-background-color: #AAAAAA, #FFFFFF;
     -fx-padding: 1;
     -fx-background-insets: 0, 1;
     -fx-background-radius: 5 5 0 0, 4 4 0 0;
-    /* also see shadowSize property and its default value */
-/*    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 15, 0.5, 0, 0);*/
 }
 
-.stage-pro:maximized {
+.stage-box:maximized {
     -fx-background-radius: 0, 0;
 }
 
-.stage-pro > .title-bar {
+.stage-box > .title-bar {
     -fx-min-height: 36px;
     -fx-max-height: 36px;
     -fx-background-color: #CCCCCC;
@@ -41,67 +39,67 @@
     -fx-background-radius: 4 4 0 0;
 }
 
-.stage-pro:maximized > .title-bar {
+.stage-box:maximized > .title-bar {
     -fx-background-radius: 0;
 }
 
-.stage-pro > .title-bar > .icon {
+.stage-box > .title-bar > .icon {
     -fx-padding: 0 10 0 0;
 }
 
-.stage-pro > .title-bar > .title {
+.stage-box > .title-bar > .title {
     -fx-font-size: 13;
     -fx-font-weight: bold;
 }
 
-.stage-pro > .title-bar > .button-box {
+.stage-box > .title-bar > .button-box {
     -fx-alignment: center;
     -fx-spacing: 10;
 }
 
-.stage-pro > .title-bar > .button-box > .button {
+.stage-box > .title-bar > .button-box > .button {
     -fx-min-width: 20px;
     -fx-min-height: 20px;
     -fx-max-width: 20px;
     -fx-max-height: 20px;
     -fx-background-radius: 20;
     -fx-padding: 0;
-    -fx-background-insets: 0, 0, 1, 2;
+    -fx-background-insets: 0;
 }
 
-.stage-pro > .title-bar > .button-box > .close-button {
+.stage-box > .title-bar > .button-box > .close-button {
     -fx-graphic: url("close-light.png");
 }
 
-.stage-pro.dark > .title-bar > .button-box > .close-button {
+.stage-box.dark > .title-bar > .button-box > .close-button {
     -fx-graphic: url("close-dark.png");
 }
 
-.stage-pro > .title-bar > .button-box > .minimize-button {
+.stage-box > .title-bar > .button-box > .minimize-button {
     -fx-graphic: url("minimize-light.png");
 }
 
-.stage-pro.dark > .title-bar > .button-box > .minimize-button {
+.stage-box.dark > .title-bar > .button-box > .minimize-button {
     -fx-graphic: url("minimize-dark.png");
 }
 
-.stage-pro > .title-bar > .button-box > .maximize-button {
+.stage-box > .title-bar > .button-box > .maximize-button {
     -fx-graphic: url("maximize-light.png");
 }
 
-.stage-pro:maximized > .title-bar > .button-box > .maximize-button {
+.stage-box:maximized > .title-bar > .button-box > .maximize-button {
     -fx-graphic: url("restore-light.png");
 }
 
-.stage-pro.dark > .title-bar > .button-box > .maximize-button {
+.stage-box.dark > .title-bar > .button-box > .maximize-button {
     -fx-graphic: url("maximize-dark.png");
 }
 
-.stage-pro:maximized.dark > .title-bar > .button-box > .maximize-button {
+.stage-box:maximized.dark > .title-bar > .button-box > .maximize-button {
     -fx-graphic: url("restore-dark.png");
 }
 
-.stage-pro > .content-area {
+.stage-box > .content-area {
     /* ... */
 }
 

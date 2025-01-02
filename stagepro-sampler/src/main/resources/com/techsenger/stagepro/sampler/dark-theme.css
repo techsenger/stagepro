@@ -18,14 +18,14 @@
     Author     : Pavel Castornii
 */
 
-.stage-pro.dark > .title-bar {
+.stage-box.dark > .title-bar {
     -fx-background-color: #000030;
 }
 
-.stage-pro.dark > .title-bar .label {
+.stage-box.dark > .title-bar .label {
     -fx-text-fill: #ffffff;
 }
 
-.stage-pro.dark > .title-bar > .button-box > .button {
+.stage-box.dark > .title-bar > .button-box > .button {
     -fx-background-color: #000060;
 }

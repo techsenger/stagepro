@@ -190,7 +190,7 @@ public class EmptyStageController {
         VBox.setVgrow(stageBox, Priority.ALWAYS);
         //there are different stylesheet priorities for scene and node
         scene.getStylesheets().add(EmptyStageController.class.getResource("stage.css").toExternalForm());
-        this.stageBox.getStyleClass().add("stage-pro");
+        this.stageBox.getStyleClass().add("stage-box");
         VBox.setVgrow(this.contentArea, Priority.ALWAYS);
         this.contentArea.getStyleClass().add("content-area");
         this.titleBar.getStyleClass().add("title-bar");
