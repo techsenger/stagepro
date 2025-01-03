@@ -45,7 +45,7 @@ import javafx.util.Duration;
  *
  * @author Pavel Castornii
  */
-public class EmptyStageController {
+public class BaseStageController {
 
     private static final PseudoClass maximizedClass = PseudoClass.getPseudoClass("maximized");
 
@@ -101,7 +101,7 @@ public class EmptyStageController {
      * For this reason, adding a deinitialize method for the controller is unnecessary. If you need
      * to remove this controller and use a standard JavaFX stage, simply create a new stage instance.
      */
-    public EmptyStageController(Stage stage, double width, double height) {
+    public BaseStageController(Stage stage, double width, double height) {
         this.stage = stage;
         this.width = width;
         this.height = height;
@@ -189,7 +189,7 @@ public class EmptyStageController {
         this.resizer.initialize(stage);
         VBox.setVgrow(stageBox, Priority.ALWAYS);
         //there are different stylesheet priorities for scene and node
-        scene.getStylesheets().add(EmptyStageController.class.getResource("stage.css").toExternalForm());
+        scene.getStylesheets().add(BaseStageController.class.getResource("stage.css").toExternalForm());
         this.stageBox.getStyleClass().add("stage-box");
         VBox.setVgrow(this.contentArea, Priority.ALWAYS);
         this.contentArea.getStyleClass().add("content-area");

@@ -17,7 +17,7 @@
 package com.techsenger.stagepro.sampler;
 
 import com.techsenger.stagepro.core.SimpleStageController;
-import com.techsenger.stagepro.core.EmptyStageController;
+import com.techsenger.stagepro.core.BaseStageController;
 import com.techsenger.stagepro.core.MaximizeButton;
 import com.techsenger.stagepro.core.StageResizeEvent;
 import com.techsenger.stagepro.core.Spacer;
@@ -128,9 +128,9 @@ public class Sampler extends Application {
     }
 
     private Sample createSample1() {
-        return new Sample(1, "Empty Stage: resize handlers", () -> {
+        return new Sample(1, "Base Stage: resize handlers", () -> {
             var stage = new Stage();
-            var controller = new EmptyStageController(stage, 800, 550);
+            var controller = new BaseStageController(stage, 800, 550);
             var button = new Button("Close");
             button.setOnAction(e -> stage.close());
             var content = new StackPane(button);

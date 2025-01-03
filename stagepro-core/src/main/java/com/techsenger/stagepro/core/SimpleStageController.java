@@ -25,7 +25,7 @@ import javafx.stage.Stage;
  *
  * @author Pavel Castornii
  */
-public class SimpleStageController extends EmptyStageController {
+public class SimpleStageController extends BaseStageController {
 
     private final Label icon = new Label();
 
