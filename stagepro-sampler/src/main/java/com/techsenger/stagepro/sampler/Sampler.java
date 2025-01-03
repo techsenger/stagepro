@@ -66,6 +66,12 @@ public class Sampler extends Application {
         idColumn.setMinWidth(50);
         idColumn.setResizable(false);
 
+        TableColumn<Sample, String> controllerColumn = new TableColumn<>("Controller");
+        controllerColumn.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getController()));
+        controllerColumn.setMaxWidth(250);
+        controllerColumn.setMinWidth(250);
+        controllerColumn.setResizable(false);
+
         TableColumn<Sample, String> descriptionColumn = new TableColumn<>("Description");
         descriptionColumn.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getDescription()));
 
@@ -104,11 +110,11 @@ public class Sampler extends Application {
             return cell;
         });
 
-        tableView.getColumns().addAll(idColumn, descriptionColumn, actionColumn);
+        tableView.getColumns().addAll(idColumn, controllerColumn, descriptionColumn, actionColumn);
 
         VBox root = new VBox(tableView);
         VBox.setVgrow(tableView, Priority.ALWAYS);
-        Scene scene = new Scene(root, 800, 400);
+        Scene scene = new Scene(root, 1000, 400);
         scene.getStylesheets().add(Sampler.class.getResource("sampler.css").toExternalForm());
         primaryStage.setScene(scene);
         primaryStage.setTitle("StagePro Sampler");
@@ -128,7 +134,7 @@ public class Sampler extends Application {
     }
 
     private Sample createSample1() {
-        return new Sample(1, "Base Stage: resize handlers", () -> {
+        return new Sample(1, BaseStageController.class.getSimpleName(), "Resize handlers", () -> {
             var stage = new Stage();
             var controller = new BaseStageController(stage, 800, 550);
             var button = new Button("Close");
@@ -144,7 +150,8 @@ public class Sampler extends Application {
     }
 
     private Sample createSample2() {
-        return new Sample(2, "Simple Stage: icon and text on the left, close button on the right", () -> {
+        return new Sample(2, SimpleStageController.class.getSimpleName(),
+                "Icon and text on the left, close button on the right", () -> {
             var stage = new Stage();
             var controller = new SimpleStageController(stage, 800, 550);
             setIconAndText(controller);
@@ -153,7 +160,8 @@ public class Sampler extends Application {
     }
 
     private Sample createSample3() {
-        return new Sample(3, "Standard Stage: icon and text on the left, three buttons on the right", () -> {
+        return new Sample(3, StandardStageController.class.getSimpleName(),
+                "Icon and text on the left, three buttons on the right", () -> {
             var stage = new Stage();
             var controller = new StandardStageController(stage, 800, 550);
             setIconAndText(controller);
@@ -163,7 +171,8 @@ public class Sampler extends Application {
     }
 
     private Sample createSample4() {
-        return new Sample(4, "Standard Stage: icon and text on the left, three buttons on the right, size effect",
+        return new Sample(4, StandardStageController.class.getSimpleName(),
+                "Icon and text on the left, three buttons on the right, size effect",
                 () -> {
             var stage = new Stage();
             var controller = new StandardStageController(stage, 800, 550);
@@ -174,17 +183,18 @@ public class Sampler extends Application {
     }
 
     private Sample createSample5() {
-        return new Sample(5, "Standard Stage: three buttons, text on the left", () -> {
-            var stage = new Stage();
-            class LeftStandardStageController extends StandardStageController {
+        class LeftStandardStageController extends StandardStageController {
 
-                LeftStandardStageController(Stage stage, double width, double height) {
-                    super(stage, width, height, false);
-                    getButtonBox().getChildren().addAll(getCloseButton(), getMinimizeButton(), getMaximizeButton());
-                    getTitleBar().getChildren().addAll(getButtonBox(), new Spacer(10), getTitle(),
-                            new Spacer());
-                }
+            LeftStandardStageController(Stage stage, double width, double height) {
+                super(stage, width, height, false);
+                getButtonBox().getChildren().addAll(getCloseButton(), getMinimizeButton(), getMaximizeButton());
+                getTitleBar().getChildren().addAll(getButtonBox(), new Spacer(10), getTitle(),
+                        new Spacer());
             }
+        }
+        return new Sample(5, LeftStandardStageController.class.getSimpleName(),
+                "Three buttons, text on the left", () -> {
+            var stage = new Stage();
             var controller = new LeftStandardStageController(stage, 800, 550);
             setIconAndText(controller);
             setStateTestContent(stage, controller);
@@ -193,7 +203,8 @@ public class Sampler extends Application {
     }
 
     private Sample createSample6() {
-        return new Sample(6, "Standard Stage: icon and text on the left, three buttons on the right, dark theme",
+        return new Sample(6, StandardStageController.class.getSimpleName(),
+                "Icon and text on the left, three buttons on the right, dark theme",
                 () -> {
             var stage = new Stage();
             var controller = new StandardStageController(stage, 800, 550);
@@ -206,7 +217,8 @@ public class Sampler extends Application {
     }
 
     private Sample createSample7() {
-        return new Sample(7, "Standard Stage: icon and menu on the left, three buttons on the right", () -> {
+        return new Sample(7, StandardStageController.class.getSimpleName(),
+                "Icon and menu on the left, three buttons on the right", () -> {
             var stage = new Stage();
             class LeftStandardStageController extends StandardStageController {
 

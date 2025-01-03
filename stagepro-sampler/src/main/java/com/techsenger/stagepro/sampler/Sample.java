@@ -24,18 +24,25 @@ public class Sample {
 
     private final int id;
 
+    private final String controller;
+
     private final String description;
 
     private final Runnable action;
 
-    public Sample(int id, String description, Runnable action) {
+    public Sample(int id, String controller, String description, Runnable action) {
         this.id = id;
+        this.controller = controller;
         this.description = description;
         this.action = action;
     }
 
     public int getId() {
         return id;
+    }
+
+    public String getController() {
+        return controller;
     }
 
     public String getDescription() {
