@@ -19,7 +19,7 @@ package com.techsenger.stagepro.sampler;
 import com.techsenger.stagepro.core.SimpleStageController;
 import com.techsenger.stagepro.core.EmptyStageController;
 import com.techsenger.stagepro.core.MaximizeButton;
-import com.techsenger.stagepro.core.ResizeEvent;
+import com.techsenger.stagepro.core.StageResizeEvent;
 import com.techsenger.stagepro.core.Spacer;
 import com.techsenger.stagepro.core.StandardStageController;
 import java.util.List;
@@ -135,8 +135,10 @@ public class Sampler extends Application {
             button.setOnAction(e -> stage.close());
             var content = new StackPane(button);
             controller.setContent(content);
-            stage.addEventHandler(ResizeEvent.RESIZING_STARTED, e -> System.out.println("Resizing started"));
-            stage.addEventHandler(ResizeEvent.RESIZING_FINISHED, e -> System.out.println("Resizing finished"));
+            stage.addEventHandler(StageResizeEvent.STAGE_RESIZING_STARTED,
+                    e -> System.out.println("Resizing started"));
+            stage.addEventHandler(StageResizeEvent.STAGE_RESIZING_FINISHED,
+                    e -> System.out.println("Resizing finished"));
             stage.show();
         });
     }

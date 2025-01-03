@@ -24,28 +24,28 @@ import javafx.scene.input.MouseEvent;
  *
  * @author Pavel Castornii
  */
-public class ResizeEvent extends Event {
+public class StageResizeEvent extends Event {
 
     /**
-     * Common supertype for all resize event types.
+     * Common supertype for all stage resize event types.
      */
-    public static final EventType<ResizeEvent> ANY = new EventType<>(Event.ANY, "ANY_RESIZE");
+    public static final EventType<StageResizeEvent> ANY = new EventType<>(Event.ANY, "STAGE_RESIZE");
 
     /**
-     * This event occurs when user starts resizing.
+     * This event occurs when user starts resizing a stage.
      */
-    public static final EventType<ResizeEvent> RESIZING_STARTED =
-            new EventType<>(ResizeEvent.ANY, "RESIZING_STARTED");
+    public static final EventType<StageResizeEvent> STAGE_RESIZING_STARTED =
+            new EventType<>(StageResizeEvent.ANY, "STAGE_RESIZING_STARTED");
 
     /**
-     * This event occurs when user finishes resizing.
+     * This event occurs when user finishes resizing a stage.
      */
-    public static final EventType<ResizeEvent> RESIZING_FINISHED =
-            new EventType<>(ResizeEvent.ANY, "RESIZING_FINISHED");
+    public static final EventType<StageResizeEvent> STAGE_RESIZING_FINISHED =
+            new EventType<>(StageResizeEvent.ANY, "STAGE_RESIZING_FINISHED");
 
     private final MouseEvent mouseEvent;
 
-    public ResizeEvent(EventType<? extends ResizeEvent> eventType, MouseEvent mouseEvent) {
+    public StageResizeEvent(EventType<? extends StageResizeEvent> eventType, MouseEvent mouseEvent) {
         super(eventType);
         this.mouseEvent = mouseEvent;
     }
