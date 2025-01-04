@@ -64,7 +64,6 @@ public class SimpleStageController extends BaseStageController {
         this.icon.getStyleClass().add("icon");
         this.title.getStyleClass().add("title");
         this.closeButton.getStyleClass().add("close-button");
-        this.closeButton.setFocusTraversable(false);
     }
 
     private void bind() {

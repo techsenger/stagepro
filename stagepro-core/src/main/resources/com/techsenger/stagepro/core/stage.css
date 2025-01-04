@@ -65,6 +65,7 @@
     -fx-background-radius: 20;
     -fx-padding: 0;
     -fx-background-insets: 0;
+    -fx-focus-traversable: false;
 }
 
 .stage-box > .title-bar > .button-box > .close-button {

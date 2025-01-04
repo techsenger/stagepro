@@ -61,7 +61,6 @@ public class StandardStageController extends SimpleStageController {
 
     private void build() {
         this.minimizeButton.getStyleClass().add("minimize-button");
-        this.minimizeButton.setFocusTraversable(false);
         getButtonBox().getChildren().addListener((ListChangeListener<? super Node>) (e) -> {
             if (this.buttonBoxListenerEnabled) {
                 this.maximizeButton.setIndex(getButtonBox().getChildren().indexOf(this.maximizeButton));
