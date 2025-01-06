@@ -18,6 +18,7 @@ package com.techsenger.stagepro.core;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 /**
@@ -27,9 +28,9 @@ import javafx.stage.Stage;
  */
 public class SimpleStageController extends BaseStageController {
 
-    private final Label icon = new Label();
+    private final ImageView iconView = new ImageView();
 
-    private final Label title = new Label();
+    private final Label titleLabel = new Label();
 
     private final Button closeButton = new Button();
 
@@ -44,16 +45,16 @@ public class SimpleStageController extends BaseStageController {
         addHandlers();
         if (initTitleBar) {
             getButtonBox().getChildren().add(closeButton);
-            getTitleBar().getChildren().addAll(icon, title, new Spacer(), getButtonBox());
+            getTitleBar().getChildren().addAll(iconView, titleLabel, new Spacer(), getButtonBox());
         }
     }
 
-    public Label getIcon() {
-        return icon;
+    public ImageView getIconView() {
+        return iconView;
     }
 
-    public Label getTitle() {
-        return title;
+    public Label getTitleLabel() {
+        return titleLabel;
     }
 
     public Button getCloseButton() {
@@ -61,13 +62,13 @@ public class SimpleStageController extends BaseStageController {
     }
 
     private void build() {
-        this.icon.getStyleClass().add("icon");
-        this.title.getStyleClass().add("title");
+        this.iconView.getStyleClass().add("icon-view");
+        this.titleLabel.getStyleClass().add("title-label");
         this.closeButton.getStyleClass().add("close-button");
     }
 
     private void bind() {
-        this.title.textProperty().bindBidirectional(getStage().titleProperty());
+        this.titleLabel.textProperty().bindBidirectional(getStage().titleProperty());
     }
 
     private void addHandlers() {

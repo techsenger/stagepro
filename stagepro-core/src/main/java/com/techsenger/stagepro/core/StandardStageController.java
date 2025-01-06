@@ -47,7 +47,7 @@ public class StandardStageController extends SimpleStageController {
         addHandlers();
         if (initTitleBar) {
             getButtonBox().getChildren().addAll(minimizeButton, maximizeButton, getCloseButton());
-            getTitleBar().getChildren().addAll(getIcon(), getTitle(), new Spacer(), getButtonBox());
+            getTitleBar().getChildren().addAll(getIconView(), getTitleLabel(), new Spacer(), getButtonBox());
         }
     }
 

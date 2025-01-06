@@ -18,18 +18,6 @@
     Author     : Pavel Castornii
 */
 
-.stage-box.dark > .title-bar {
-    -fx-background-color: #000030;
-}
-
-.stage-box.dark > .title-bar > .icon-view {
-     -fx-image: url("icon-dark.png");
-}
-
-.stage-box.dark > .title-bar > .title-label {
-    -fx-text-fill: #ffffff;
-}
-
-.stage-box.dark > .title-bar > .button-box > .button {
-    -fx-background-color: #000060;
+.stage-box > .title-bar > .icon-view {
+     -fx-image: url("icon-light.png");
 }

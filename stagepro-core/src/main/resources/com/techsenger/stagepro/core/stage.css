@@ -32,9 +32,10 @@
 
 .stage-box > .title-bar {
     -fx-min-height: 36px;
+    -fx-pref-height: 36px;
     -fx-max-height: 36px;
     -fx-background-color: #CCCCCC;
-    -fx-alignment: center;
+    -fx-alignment: center_left;
     -fx-padding: 0 10 0 10;
     -fx-background-radius: 4 4 0 0;
 }
@@ -43,13 +44,12 @@
     -fx-background-radius: 0;
 }
 
-.stage-box > .title-bar > .icon {
-    -fx-padding: 0 10 0 0;
+.stage-box > .title-bar > .icon-view {
+    /* ... */
 }
 
-.stage-box > .title-bar > .title {
-    -fx-font-size: 13;
-    -fx-font-weight: bold;
+.stage-box > .title-bar > .title-label {
+    /* ... */
 }
 
 .stage-box > .title-bar > .button-box {

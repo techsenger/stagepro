@@ -154,7 +154,7 @@ public class Sampler extends Application {
                 "Icon and text on the left, close button on the right", () -> {
             var stage = new Stage();
             var controller = new SimpleStageController(stage, 800, 550);
-            setIconAndText(controller);
+            setTitleAndCss(controller);
             stage.show();
         });
     }
@@ -164,7 +164,7 @@ public class Sampler extends Application {
                 "Icon and text on the left, three buttons on the right", () -> {
             var stage = new Stage();
             var controller = new StandardStageController(stage, 800, 550);
-            setIconAndText(controller);
+            setTitleAndCss(controller);
             setStateTestContent(stage, controller);
             stage.show();
         });
@@ -176,7 +176,7 @@ public class Sampler extends Application {
                 () -> {
             var stage = new Stage();
             var controller = new StandardStageController(stage, 800, 550);
-            setIconAndText(controller);
+            setTitleAndCss(controller);
             controller.setSizeEffectEnabled(true);
             stage.show();
         });
@@ -188,7 +188,7 @@ public class Sampler extends Application {
             LeftStandardStageController(Stage stage, double width, double height) {
                 super(stage, width, height, false);
                 getButtonBox().getChildren().addAll(getCloseButton(), getMinimizeButton(), getMaximizeButton());
-                getTitleBar().getChildren().addAll(getButtonBox(), new Spacer(10), getTitle(),
+                getTitleBar().getChildren().addAll(getButtonBox(), new Spacer(10), getTitleLabel(),
                         new Spacer());
             }
         }
@@ -196,7 +196,7 @@ public class Sampler extends Application {
                 "Three buttons, text on the left", () -> {
             var stage = new Stage();
             var controller = new LeftStandardStageController(stage, 800, 550);
-            setIconAndText(controller);
+            setTitleAndCss(controller);
             setStateTestContent(stage, controller);
             stage.show();
         });
@@ -208,9 +208,9 @@ public class Sampler extends Application {
                 () -> {
             var stage = new Stage();
             var controller = new StandardStageController(stage, 800, 550);
-            setIconAndText(controller);
-            setStateTestContent(stage, controller);
             controller.setDarkTheme(true);
+            setTitleAndCss(controller);
+            setStateTestContent(stage, controller);
             stage.getScene().getStylesheets().add(Sampler.class.getResource("dark-theme.css").toExternalForm());
             stage.show();
         });
@@ -234,20 +234,23 @@ public class Sampler extends Application {
                     super(stage, width, height, false);
                     this.menuBar.setStyle("-fx-background-color: #CCCCCC;");
                     getButtonBox().getChildren().addAll(getMinimizeButton(), getMaximizeButton(), getCloseButton());
-                    getTitleBar().getChildren().addAll(getIcon(), menuBar, new Spacer(), getButtonBox());
+                    getTitleBar().getChildren().addAll(getIconView(), menuBar, new Spacer(), getButtonBox());
                 }
             }
             var controller = new LeftStandardStageController(stage, 800, 550);
-            setIconAndText(controller);
+            setTitleAndCss(controller);
             setStateTestContent(stage, controller);
             stage.show();
         });
     }
 
-    private void setIconAndText(SimpleStageController controller) {
-        controller.getIcon().setText("\u26A1");
-        controller.getIcon().setStyle("-fx-font-size:20;-fx-font-weight:bold");
-        controller.getTitle().setText("Title");
+    private void setTitleAndCss(SimpleStageController controller) {
+        controller.getTitleLabel().setText("Title");
+        var cssFile = "light-theme.css";
+        if (controller.isDarkTheme()) {
+            cssFile = "dark-theme.css";
+        }
+        controller.getStage().getScene().getStylesheets().add(Sampler.class.getResource(cssFile).toExternalForm());
     }
 
     private void setStateTestContent(Stage stage, StandardStageController controller) {
