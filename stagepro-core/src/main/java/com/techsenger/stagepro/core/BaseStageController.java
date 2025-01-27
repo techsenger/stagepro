@@ -174,6 +174,15 @@ public class BaseStageController {
         return resizer;
     }
 
+    /**
+     * Returns the stage box that is the root of the scene.
+     *
+     * @return
+     */
+    protected VBox getStageBox() {
+        return stageBox;
+    }
+
     private void build() {
         //with StageStyle.UNDECORATED resizing works slowly, besides with UNDECORATED style background bahind radius
         //corners will be visible
