@@ -47,7 +47,7 @@ import javafx.util.Duration;
  */
 public class BaseStageController {
 
-    private static final PseudoClass maximizedClass = PseudoClass.getPseudoClass("maximized");
+    private static final PseudoClass MAXIMIZED_PSEUDO_CLASS = PseudoClass.getPseudoClass("maximized");
 
     private final Stage stage;
 
@@ -383,6 +383,6 @@ public class BaseStageController {
     }
 
     private void checkMaximizedPseudoClass(boolean maximized) {
-        this.stageBox.pseudoClassStateChanged(maximizedClass, maximized);
+        this.stageBox.pseudoClassStateChanged(MAXIMIZED_PSEUDO_CLASS, maximized);
     }
 }
