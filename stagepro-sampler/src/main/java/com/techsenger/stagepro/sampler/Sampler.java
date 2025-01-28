@@ -16,11 +16,11 @@
 
 package com.techsenger.stagepro.sampler;
 
-import com.techsenger.stagepro.core.SimpleStageController;
 import com.techsenger.stagepro.core.BaseStageController;
 import com.techsenger.stagepro.core.MaximizeButton;
-import com.techsenger.stagepro.core.StageResizeEvent;
+import com.techsenger.stagepro.core.SimpleStageController;
 import com.techsenger.stagepro.core.Spacer;
+import com.techsenger.stagepro.core.StageResizeEvent;
 import com.techsenger.stagepro.core.StandardStageController;
 import java.util.List;
 import javafx.application.Application;
@@ -154,7 +154,7 @@ public class Sampler extends Application {
                 "Icon and text on the left, close button on the right", () -> {
             var stage = new Stage();
             var controller = new SimpleStageController(stage, 800, 550);
-            setTitleAndCss(controller);
+            setTitleAndCss(controller, false);
             stage.show();
         });
     }
@@ -164,7 +164,7 @@ public class Sampler extends Application {
                 "Icon and text on the left, three buttons on the right", () -> {
             var stage = new Stage();
             var controller = new StandardStageController(stage, 800, 550);
-            setTitleAndCss(controller);
+            setTitleAndCss(controller, false);
             setStateTestContent(stage, controller);
             stage.show();
         });
@@ -176,7 +176,7 @@ public class Sampler extends Application {
                 () -> {
             var stage = new Stage();
             var controller = new StandardStageController(stage, 800, 550);
-            setTitleAndCss(controller);
+            setTitleAndCss(controller, false);
             controller.setSizeEffectEnabled(true);
             stage.show();
         });
@@ -196,7 +196,7 @@ public class Sampler extends Application {
                 "Three buttons, text on the left", () -> {
             var stage = new Stage();
             var controller = new LeftStandardStageController(stage, 800, 550);
-            setTitleAndCss(controller);
+            setTitleAndCss(controller, false);
             setStateTestContent(stage, controller);
             stage.show();
         });
@@ -208,8 +208,7 @@ public class Sampler extends Application {
                 () -> {
             var stage = new Stage();
             var controller = new StandardStageController(stage, 800, 550);
-            controller.setDarkTheme(true);
-            setTitleAndCss(controller);
+            setTitleAndCss(controller, true);
             setStateTestContent(stage, controller);
             stage.getScene().getStylesheets().add(Sampler.class.getResource("dark-theme.css").toExternalForm());
             stage.show();
@@ -238,16 +237,16 @@ public class Sampler extends Application {
                 }
             }
             var controller = new LeftStandardStageController(stage, 800, 550);
-            setTitleAndCss(controller);
+            setTitleAndCss(controller, false);
             setStateTestContent(stage, controller);
             stage.show();
         });
     }
 
-    private void setTitleAndCss(SimpleStageController controller) {
+    private void setTitleAndCss(SimpleStageController controller, boolean dark) {
         controller.getTitleLabel().setText("Title");
         var cssFile = "light-theme.css";
-        if (controller.isDarkTheme()) {
+        if (dark) {
             cssFile = "dark-theme.css";
         }
         controller.getStage().getScene().getStylesheets().add(Sampler.class.getResource(cssFile).toExternalForm());

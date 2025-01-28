@@ -17,11 +17,12 @@
 package com.techsenger.stagepro.core;
 
 import javafx.beans.binding.Bindings;
-import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
 import javafx.collections.ListChangeListener;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Region;
+import javafx.stage.Stage;
 
 /**
  *
@@ -29,9 +30,10 @@ import javafx.scene.Node;
  */
 public class StandardStageController extends SimpleStageController {
 
-    private final Button minimizeButton = new Button();
+    private final Button minimizeButton = new Button(null, new Region());
 
-    private final MaximizeButton maximizeButton = new MaximizeButton(MaximizeButton.ResizableStatePolicy.VISIBILITY);
+    private final MaximizeButton maximizeButton =
+            new MaximizeButton(MaximizeButton.ResizableStatePolicy.VISIBILITY, null, new Region());
 
     private boolean buttonBoxListenerEnabled = true;
 
@@ -61,6 +63,8 @@ public class StandardStageController extends SimpleStageController {
 
     private void build() {
         this.minimizeButton.getStyleClass().add("minimize-button");
+        this.minimizeButton.getGraphic().getStyleClass().add("icon");
+        maximizeButton.getGraphic().getStyleClass().add("icon");
         getButtonBox().getChildren().addListener((ListChangeListener<? super Node>) (e) -> {
             if (this.buttonBoxListenerEnabled) {
                 this.maximizeButton.setIndex(getButtonBox().getChildren().indexOf(this.maximizeButton));

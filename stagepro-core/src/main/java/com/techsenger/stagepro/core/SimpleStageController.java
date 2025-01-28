@@ -19,6 +19,7 @@ package com.techsenger.stagepro.core;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 
 /**
@@ -32,7 +33,7 @@ public class SimpleStageController extends BaseStageController {
 
     private final Label titleLabel = new Label();
 
-    private final Button closeButton = new Button();
+    private final Button closeButton = new Button(null, new Region());
 
     public SimpleStageController(Stage stage, double width, double height) {
         this(stage, width, height, true);
@@ -64,6 +65,7 @@ public class SimpleStageController extends BaseStageController {
     private void build() {
         this.iconView.getStyleClass().add("icon-view");
         this.titleLabel.getStyleClass().add("title-label");
+        this.closeButton.getGraphic().getStyleClass().add("icon");
         this.closeButton.getStyleClass().add("close-button");
     }
 

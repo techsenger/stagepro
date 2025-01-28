@@ -41,7 +41,7 @@ import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
 /**
- * Base stage controller: no title icon, label and no buttons. Use this controller for creating non standard stages.
+ * Base stage controller: no title icon, label and buttons. Use this controller for creating non standard stages.
  *
  * @author Pavel Castornii
  */
@@ -72,8 +72,6 @@ public class BaseStageController {
     private double pressedMouseX;
 
     private double pressedMouseY;
-
-    private final BooleanProperty darkTheme = new SimpleBooleanProperty();
 
     private StageResizer resizer;
 
@@ -120,18 +118,6 @@ public class BaseStageController {
 
     public void setContent(Node content) {
         this.content.set(content);
-    }
-
-    public BooleanProperty darkThemeProperty() {
-        return darkTheme;
-    }
-
-    public boolean isDarkTheme() {
-        return this.darkTheme.get();
-    }
-
-    public void setDarkTheme(boolean dark) {
-        this.darkTheme.set(dark);
     }
 
     public BooleanProperty sizeEffectEnabledProperty() {
@@ -214,13 +200,6 @@ public class BaseStageController {
                 setNewContent(newV);
             } else {
                 setEmptyContent();
-            }
-        });
-        this.darkTheme.addListener((ov, oldV, newV) -> {
-            if (newV) {
-                this.stageBox.getStyleClass().add("dark");
-            } else {
-                this.stageBox.getStyleClass().remove("dark");
             }
         });
         this.stage.maximizedProperty().addListener((ov, oldV, newV) -> checkMaximizedPseudoClass(newV));

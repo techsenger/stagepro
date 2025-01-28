@@ -68,36 +68,33 @@
     -fx-focus-traversable: false;
 }
 
-.stage-box > .title-bar > .button-box > .close-button {
-    -fx-graphic: url("close-light.png");
+/*
+  The width of the icon and the width of the button should be chosen in such a way that the spacing between the
+  icon and the button is equal on both the left and right sides of the icon. The same applies to the spacing above and
+  below the icon. Otherwise, the result will appear fuzzy due to -fx-position-shape.
+  See https://openjfx.io/javadoc/23/javafx.graphics/javafx/scene/shape/Shape.html#interaction-with-coordinate-systems-heading
+*/
+.stage-box > .title-bar > .button-box > .button > .icon {
+    -fx-scale-shape: false;
+    -fx-pref-width:20px;
+    -fx-pref-height:20px;
+    -fx-background-color: #111111;
 }
 
-.stage-box.dark > .title-bar > .button-box > .close-button {
-    -fx-graphic: url("close-dark.png");
+.stage-box > .title-bar > .button-box > .close-button > .icon {
+    -fx-shape:"M0,0 H1 L 4,3 7,0 H8 V1 L 5,4 8,7 V8 H7 L 4,5 1,8 H0 V7 L 3,4 0,1 Z";
 }
 
-.stage-box > .title-bar > .button-box > .minimize-button {
-    -fx-graphic: url("minimize-light.png");
+.stage-box > .title-bar > .button-box > .minimize-button > .icon {
+    -fx-shape:"M0,0 H10 V2 H0 Z";
 }
 
-.stage-box.dark > .title-bar > .button-box > .minimize-button {
-    -fx-graphic: url("minimize-dark.png");
+.stage-box > .title-bar > .button-box > .maximize-button > .icon {
+    -fx-shape:"M0,0 H10 V2 H0 Z M0,0 H1 V9 H0 Z M0,10 H10 V9 H0 Z M10,0 V9 H9 V0 Z";
 }
 
-.stage-box > .title-bar > .button-box > .maximize-button {
-    -fx-graphic: url("maximize-light.png");
-}
-
-.stage-box:maximized > .title-bar > .button-box > .maximize-button {
-    -fx-graphic: url("restore-light.png");
-}
-
-.stage-box.dark > .title-bar > .button-box > .maximize-button {
-    -fx-graphic: url("maximize-dark.png");
-}
-
-.stage-box:maximized.dark > .title-bar > .button-box > .maximize-button {
-    -fx-graphic: url("restore-dark.png");
+.stage-box:maximized > .title-bar > .button-box > .maximize-button > .icon {
+    -fx-shape:"M0,2 H8 V4 H0 Z M0,2 H1 V10 H0 Z M0,9 H8 V10 H0 Z M7,2 H8 V10 H7 Z M2,0 H3 V2 H2 Z M2,0 H10 V1 H2 Z M9,0 H10 V8 H9 Z M8,7 H10 V8 H8 Z";
 }
 
 .stage-box > .content-area {
