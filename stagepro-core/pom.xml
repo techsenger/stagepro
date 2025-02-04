@@ -4,7 +4,7 @@
     <parent>
         <groupId>com.techsenger.stagepro</groupId>
         <artifactId>stagepro</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>1.0.0</version>
     </parent>
 
     <groupId>com.techsenger.stagepro</groupId>
@@ -17,6 +17,10 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.techsenger.toolkit</groupId>
+            <artifactId>toolkit-fx</artifactId>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>

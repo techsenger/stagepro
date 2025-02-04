@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 Pavel Castornii.
+ * Copyright 2024-2025 Pavel Castornii.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 
 package com.techsenger.stagepro.core;
 
+import com.techsenger.toolkit.fx.StageResizer;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.beans.property.BooleanProperty;

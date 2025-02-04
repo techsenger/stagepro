@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 Pavel Castornii.
+ * Copyright 2024-2025 Pavel Castornii.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 
 module com.techsenger.stagepro.core {
     requires org.slf4j;
+    requires com.techsenger.toolkit.fx;
     requires javafx.base;
     requires javafx.graphics;
     requires javafx.controls;

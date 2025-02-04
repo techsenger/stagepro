@@ -4,12 +4,12 @@
     <parent>
         <groupId>com.techsenger.maven-root</groupId>
         <artifactId>maven-root</artifactId>
-        <version>1.3.0</version>
+        <version>1.4.0</version>
     </parent>
 
     <groupId>com.techsenger.stagepro</groupId>
     <artifactId>stagepro</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <packaging>pom</packaging>
     <name>StagePro</name>
     <description>StagePro is a library for creating custom JavaFX stages with full control</description>
@@ -36,44 +36,25 @@
 
     <developers>
         <developer>
-            <id>pavel-castornii</id>
+            <id>pcastornii</id>
             <name>Pavel Castornii</name>
         </developer>
     </developers>
-
-    <properties>
-        <maven.compiler.release>16</maven.compiler.release>
-        <javafx.version>16</javafx.version>
-    </properties>
 
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>com.techsenger.osp-bom</groupId>
                 <artifactId>osp-bom</artifactId>
-                <version>1.2.0</version>
+                <version>1.3.0</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            
             <dependency>
                 <groupId>com.techsenger.stagepro</groupId>
                 <artifactId>stagepro-core</artifactId>
                 <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.openjfx</groupId>
-                <artifactId>javafx-controls</artifactId>
-                <version>${javafx.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.openjfx</groupId>
-                <artifactId>javafx-base</artifactId>
-                <version>${javafx.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.openjfx</groupId>
-                <artifactId>javafx-graphics</artifactId>
-                <version>${javafx.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
