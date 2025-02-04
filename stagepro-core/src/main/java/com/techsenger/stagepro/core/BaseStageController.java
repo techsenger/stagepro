@@ -17,6 +17,7 @@
 package com.techsenger.stagepro.core;
 
 import com.techsenger.toolkit.fx.StageResizer;
+import com.techsenger.toolkit.fx.color.ColorUtils;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.beans.property.BooleanProperty;

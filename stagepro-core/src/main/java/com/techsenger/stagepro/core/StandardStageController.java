@@ -16,6 +16,7 @@
 
 package com.techsenger.stagepro.core;
 
+import com.techsenger.toolkit.fx.Spacer;
 import javafx.beans.binding.Bindings;
 import javafx.collections.ListChangeListener;
 import javafx.scene.Node;

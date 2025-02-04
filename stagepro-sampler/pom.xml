@@ -15,6 +15,10 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.techsenger.toolkit</groupId>
+            <artifactId>toolkit-fx</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.techsenger.stagepro</groupId>
             <artifactId>stagepro-core</artifactId>
         </dependency>

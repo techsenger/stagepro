@@ -19,9 +19,9 @@ package com.techsenger.stagepro.sampler;
 import com.techsenger.stagepro.core.BaseStageController;
 import com.techsenger.stagepro.core.MaximizeButton;
 import com.techsenger.stagepro.core.SimpleStageController;
-import com.techsenger.stagepro.core.Spacer;
 import com.techsenger.stagepro.core.StageResizeEvent;
 import com.techsenger.stagepro.core.StandardStageController;
+import com.techsenger.toolkit.fx.Spacer;
 import java.util.List;
 import javafx.application.Application;
 import javafx.beans.property.ReadOnlyObjectWrapper;
@@ -188,7 +188,7 @@ public class Sampler extends Application {
             LeftStandardStageController(Stage stage, double width, double height) {
                 super(stage, width, height, false);
                 getButtonBox().getChildren().addAll(getCloseButton(), getMinimizeButton(), getMaximizeButton());
-                getTitleBar().getChildren().addAll(getButtonBox(), new Spacer(10), getTitleLabel(),
+                getTitleBar().getChildren().addAll(getButtonBox(), new Spacer(10.0), getTitleLabel(),
                         new Spacer());
             }
         }
@@ -231,7 +231,7 @@ public class Sampler extends Application {
 
                 LeftStandardStageController(Stage stage, double width, double height) {
                     super(stage, width, height, false);
-                    this.menuBar.setStyle("-fx-background-color: #CCCCCC;");
+                    this.menuBar.setStyle("-fx-background-color: #CCCCCC;-fx-padding: 0");
                     getButtonBox().getChildren().addAll(getMinimizeButton(), getMaximizeButton(), getCloseButton());
                     getTitleBar().getChildren().addAll(getIconView(), menuBar, new Spacer(), getButtonBox());
                 }

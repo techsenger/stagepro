@@ -15,6 +15,7 @@
  */
 
 module com.techsenger.stagepro.sampler {
+    requires com.techsenger.toolkit.fx;
     requires com.techsenger.stagepro.core;
     requires org.slf4j;
     requires javafx.base;
