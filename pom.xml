@@ -41,6 +41,10 @@
         </developer>
     </developers>
 
+    <properties>
+        <publishing.plugin.exclusions>stagepro-sampler</publishing.plugin.exclusions>
+    </properties>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -50,7 +54,7 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            
+
             <dependency>
                 <groupId>com.techsenger.stagepro</groupId>
                 <artifactId>stagepro-core</artifactId>

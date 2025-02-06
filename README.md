@@ -44,7 +44,15 @@ Due to some bugs, use JavaFX versions 16–20, or a version of JavaFX after 24-e
 
 # Dependencies <a name="dependencies"></a>
 
-The project will be added to the Maven Central repository in a few weeks.
+This project is available on Maven Central:
+
+```
+<dependency>
+    <groupId>com.techsenger.stagepro</groupId>
+    <artifactId>stagepro-core</artifactId>
+    <version>${stagepro.version}</version>
+</dependency>
+```
 
 # Usage <a name="usage"></a>
 
