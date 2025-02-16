@@ -1,4 +1,10 @@
 # Techsenger StagePro
+
+| Support the Project! |
+|:-------------|
+| This project is open-source and free to use, both commercially and non-commercially, which is why we need your help in its development. If you like it, please give it a star ⭐ on GitHub — it helps others discover the project and increases its visibility. You can also contribute, for example, by fixing bugs 🐛 or suggesting improvements 💡 — see [Contributing](#contributing). If you can, financial support 💰 is always appreciated — see [Support Us](#support-us). Thank you for your support! |
+
+## Table of Contents
 * [Overview](#overview)
 * [Demo](#demo)
 * [Features](#features)
@@ -9,20 +15,18 @@
 * [Running Sampler](#sampler)
 * [License](#license)
 * [Contributing](#contributing)
-* [Support Us](#support-us)
+* [👉 Support Us](#support-us)
 
-# Overview <a name="overview"></a>
+## Overview <a name="overview"></a>
 
 Techsenger StagePro is a library that allows you to create custom stages with nearly any configuration, while remaining
 easy to use. The project also includes a sampler module, featuring key samples to help you get started with the library.
 
-If you like this project and find it useful, please consider [supporting us](#support-us).
-
-# Demo <a name="demo"></a>
+## Demo <a name="demo"></a>
 
 ![StagePro Demo](./demo.png)
 
-# Features <a name="features"></a>
+## Features <a name="features"></a>
 
 Key features include:
 
@@ -38,11 +42,11 @@ Key features include:
 Currently, shadow for Stage is not supported, as it seems there is no way to set a shadow around a Stage using JavaFX.
 It is likely that this can only be achieved using native code.
 
-# Requirements <a name="requirements"></a>
+## Requirements <a name="requirements"></a>
 
 Due to some bugs, use JavaFX versions 16–20, or a version of JavaFX after 24-ea+19 (see JDK-8344372).
 
-# Dependencies <a name="dependencies"></a>
+## Dependencies <a name="dependencies"></a>
 
 This project is available on Maven Central:
 
@@ -54,7 +58,7 @@ This project is available on Maven Central:
 </dependency>
 ```
 
-# Usage <a name="usage"></a>
+## Usage <a name="usage"></a>
 
 To create a standard Stage, use the code below. To explore all features, check out the examples in the sampler.
 
@@ -68,7 +72,7 @@ public void start(Stage stage) {
 }
 ```
 
-# Code Building <a name="code-building"></a>
+## Code Building <a name="code-building"></a>
 
 To build the library use standard Git and Maven commands:
 
@@ -76,7 +80,7 @@ To build the library use standard Git and Maven commands:
     cd stagepro
     mvn clean install
 
-# Running Sampler <a name="sampler"></a>
+## Running Sampler <a name="sampler"></a>
 
 To run the sampler execute the following commands in the root of the project:
 
@@ -85,20 +89,18 @@ To run the sampler execute the following commands in the root of the project:
 
 Please note, that debugger settings are in `stagepro-sampler/pom.xml` file.
 
-# License <a name="license"></a>
+## License <a name="license"></a>
 
 Techsenger StagePro is licensed under the Apache License, Version 2.0.
 
-# Contributing <a name="contributing"></a>
+## Contributing <a name="contributing"></a>
 
 We welcome all contributions. You can help by reporting bugs, suggesting improvements, or submitting pull requests
-with fixes and new features.
+with fixes and new features. If you have any questions, feel free to reach out — we’ll be happy to assist you.
 
-# Support Us <a name="support-us"></a>
+## 👉 Support Us <a name="support-us"></a>
 
 You can support us financially through [GitHub Sponsors](https://github.com/sponsors/techsenger). Your
 contribution directly helps us keep our open-source projects active, improve their features, and offer ongoing support.
 Besides, we offer multiple sponsorship tiers, with different rewards.
-
-You can also give this project a star ⭐, which will help other users find it and increase its popularity.
 
