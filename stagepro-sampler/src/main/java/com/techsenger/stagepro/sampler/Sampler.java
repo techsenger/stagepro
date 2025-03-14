@@ -141,10 +141,10 @@ public class Sampler extends Application {
             button.setOnAction(e -> stage.close());
             var content = new StackPane(button);
             controller.setContent(content);
-            stage.addEventHandler(StageResizeEvent.STAGE_RESIZING_STARTED,
-                    e -> System.out.println("Resizing started"));
-            stage.addEventHandler(StageResizeEvent.STAGE_RESIZING_FINISHED,
-                    e -> System.out.println("Resizing finished"));
+            stage.addEventHandler(StageResizeEvent.STAGE_RESIZE_STARTED,
+                    e -> System.out.println("Resize started"));
+            stage.addEventHandler(StageResizeEvent.STAGE_RESIZE_FINISHED,
+                    e -> System.out.println("Resize finished"));
             stage.show();
         });
     }

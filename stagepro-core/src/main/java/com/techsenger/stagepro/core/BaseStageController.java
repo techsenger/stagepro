@@ -294,12 +294,12 @@ public class BaseStageController {
     }
 
     private void onResizingStarted(MouseEvent mouseEvent) {
-        var event = new StageResizeEvent(StageResizeEvent.STAGE_RESIZING_STARTED, mouseEvent);
+        var event = new StageResizeEvent(StageResizeEvent.STAGE_RESIZE_STARTED, mouseEvent);
         this.stage.fireEvent(event);
     }
 
     private void onResizingFinished(MouseEvent mouseEvent) {
-        var event = new StageResizeEvent(StageResizeEvent.STAGE_RESIZING_FINISHED, mouseEvent);
+        var event = new StageResizeEvent(StageResizeEvent.STAGE_RESIZE_FINISHED, mouseEvent);
         this.stage.fireEvent(event);
     }
 

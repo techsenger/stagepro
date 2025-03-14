@@ -34,14 +34,14 @@ public class StageResizeEvent extends Event {
     /**
      * This event occurs when user starts resizing a stage.
      */
-    public static final EventType<StageResizeEvent> STAGE_RESIZING_STARTED =
-            new EventType<>(StageResizeEvent.ANY, "STAGE_RESIZING_STARTED");
+    public static final EventType<StageResizeEvent> STAGE_RESIZE_STARTED =
+            new EventType<>(StageResizeEvent.ANY, "STAGE_RESIZE_STARTED");
 
     /**
      * This event occurs when user finishes resizing a stage.
      */
-    public static final EventType<StageResizeEvent> STAGE_RESIZING_FINISHED =
-            new EventType<>(StageResizeEvent.ANY, "STAGE_RESIZING_FINISHED");
+    public static final EventType<StageResizeEvent> STAGE_RESIZE_FINISHED =
+            new EventType<>(StageResizeEvent.ANY, "STAGE_RESIZE_FINISHED");
 
     private final MouseEvent mouseEvent;
 
