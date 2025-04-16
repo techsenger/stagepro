@@ -4,7 +4,7 @@
     <parent>
         <groupId>com.techsenger.maven-root</groupId>
         <artifactId>maven-root</artifactId>
-        <version>1.4.0</version>
+        <version>1.5.0</version>
     </parent>
 
     <groupId>com.techsenger.stagepro</groupId>
@@ -50,7 +50,7 @@
             <dependency>
                 <groupId>com.techsenger.osp-bom</groupId>
                 <artifactId>osp-bom</artifactId>
-                <version>1.3.0</version>
+                <version>1.6.0</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
