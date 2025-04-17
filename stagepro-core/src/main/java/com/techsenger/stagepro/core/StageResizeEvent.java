@@ -21,6 +21,14 @@ import javafx.event.EventType;
 import javafx.scene.input.MouseEvent;
 
 /**
+ * Custom event for tracking Stage resize operations in JavaFX.
+ *
+ * <p>This implementation deliberately avoids extending WindowEvent to prevent any potential interference with
+ * JavaFX's native window event handling. The independent event hierarchy ensures clean separation while maintaining
+ * focus on Stage-specific behavior.</p>
+ *
+ * <p>The STARTED/FINISHED naming follows JavaFX's established convention for interaction events, mirroring patterns
+ * like ScrollEvent.SCROLL_STARTED/SCROLL_FINISHED.</p>
  *
  * @author Pavel Castornii
  */
@@ -32,13 +40,13 @@ public class StageResizeEvent extends Event {
     public static final EventType<StageResizeEvent> ANY = new EventType<>(Event.ANY, "STAGE_RESIZE");
 
     /**
-     * This event occurs when user starts resizing a stage.
+     * This event occurs when user starts resizing a stage (mouse pressed on border).
      */
     public static final EventType<StageResizeEvent> STAGE_RESIZE_STARTED =
             new EventType<>(StageResizeEvent.ANY, "STAGE_RESIZE_STARTED");
 
     /**
-     * This event occurs when user finishes resizing a stage.
+     * This event occurs when user finishes resizing a stage (mouse released).
      */
     public static final EventType<StageResizeEvent> STAGE_RESIZE_FINISHED =
             new EventType<>(StageResizeEvent.ANY, "STAGE_RESIZE_FINISHED");
