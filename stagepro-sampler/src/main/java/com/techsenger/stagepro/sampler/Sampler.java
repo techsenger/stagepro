@@ -286,9 +286,6 @@ public class Sampler extends Application {
             }
         });
         gridPane.add(resizeHandlersCheckBox, 0, rowIndex);
-        var sizeEffectCheckBox = new CheckBox("Size Effect");
-        sizeEffectCheckBox.selectedProperty().bindBidirectional(controller.sizeEffectEnabledProperty());
-        gridPane.add(sizeEffectCheckBox, 1, rowIndex);
 
         var content = new BorderPane();
         content.setCenter(gridPane);
