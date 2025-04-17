@@ -49,6 +49,10 @@ import javafx.stage.Stage;
  */
 public class Sampler extends Application {
 
+    private static double SAMPLE_STAGE_WIDTH = 600;
+
+    private static double SAMPLE_STAGE_HEIGHT = 400;
+
     public static void main(String[] args) {
         launch(args);
     }
@@ -136,7 +140,7 @@ public class Sampler extends Application {
     private Sample createSample1() {
         return new Sample(1, BaseStageController.class.getSimpleName(), "Resize handlers", () -> {
             var stage = new Stage();
-            var controller = new BaseStageController(stage, 800, 550);
+            var controller = new BaseStageController(stage, SAMPLE_STAGE_WIDTH, SAMPLE_STAGE_HEIGHT);
             var button = new Button("Close");
             button.setOnAction(e -> stage.close());
             var content = new StackPane(button);
@@ -153,7 +157,7 @@ public class Sampler extends Application {
         return new Sample(2, SimpleStageController.class.getSimpleName(),
                 "Icon and text on the left, close button on the right", () -> {
             var stage = new Stage();
-            var controller = new SimpleStageController(stage, 800, 550);
+            var controller = new SimpleStageController(stage, SAMPLE_STAGE_WIDTH, SAMPLE_STAGE_HEIGHT);
             setTitleAndCss(controller, false);
             stage.show();
         });
@@ -163,7 +167,7 @@ public class Sampler extends Application {
         return new Sample(3, StandardStageController.class.getSimpleName(),
                 "Icon and text on the left, three buttons on the right", () -> {
             var stage = new Stage();
-            var controller = new StandardStageController(stage, 800, 550);
+            var controller = new StandardStageController(stage, SAMPLE_STAGE_WIDTH, SAMPLE_STAGE_HEIGHT);
             setTitleAndCss(controller, false);
             setStateTestContent(stage, controller);
             stage.show();
@@ -175,7 +179,7 @@ public class Sampler extends Application {
                 "Icon and text on the left, three buttons on the right, size effect",
                 () -> {
             var stage = new Stage();
-            var controller = new StandardStageController(stage, 800, 550);
+            var controller = new StandardStageController(stage, SAMPLE_STAGE_WIDTH, SAMPLE_STAGE_HEIGHT);
             setTitleAndCss(controller, false);
             controller.setSizeEffectEnabled(true);
             stage.show();
@@ -195,7 +199,7 @@ public class Sampler extends Application {
         return new Sample(5, LeftStandardStageController.class.getSimpleName(),
                 "Three buttons, text on the left", () -> {
             var stage = new Stage();
-            var controller = new LeftStandardStageController(stage, 800, 550);
+            var controller = new LeftStandardStageController(stage, SAMPLE_STAGE_WIDTH, SAMPLE_STAGE_HEIGHT);
             setTitleAndCss(controller, false);
             setStateTestContent(stage, controller);
             stage.show();
@@ -207,7 +211,7 @@ public class Sampler extends Application {
                 "Icon and text on the left, three buttons on the right, dark theme",
                 () -> {
             var stage = new Stage();
-            var controller = new StandardStageController(stage, 800, 550);
+            var controller = new StandardStageController(stage, SAMPLE_STAGE_WIDTH, SAMPLE_STAGE_HEIGHT);
             setTitleAndCss(controller, true);
             setStateTestContent(stage, controller);
             stage.getScene().getStylesheets().add(Sampler.class.getResource("dark-theme.css").toExternalForm());
@@ -236,7 +240,7 @@ public class Sampler extends Application {
                     getTitleBar().getChildren().addAll(getIconView(), menuBar, new Spacer(), getButtonBox());
                 }
             }
-            var controller = new LeftStandardStageController(stage, 800, 550);
+            var controller = new LeftStandardStageController(stage, SAMPLE_STAGE_WIDTH, SAMPLE_STAGE_HEIGHT);
             setTitleAndCss(controller, false);
             setStateTestContent(stage, controller);
             stage.show();
