@@ -66,12 +66,6 @@ public class StandardStageController extends SimpleStageController {
         this.minimizeButton.getStyleClass().add("minimize-button");
         this.minimizeButton.getGraphic().getStyleClass().add("icon");
         maximizeButton.getGraphic().getStyleClass().add("icon");
-        getButtonBox().getChildren().addListener((ListChangeListener<? super Node>) (e) -> {
-            if (this.buttonBoxListenerEnabled) {
-                this.maximizeButton.setIndex(getButtonBox().getChildren().indexOf(this.maximizeButton));
-                checkMaximizeButton();
-            }
-        });
     }
 
     private void bind() {
@@ -80,7 +74,14 @@ public class StandardStageController extends SimpleStageController {
     }
 
     private void addListeners() {
-        getStage().resizableProperty().addListener((ov, oldV, newV) -> checkMaximizeButton());
+        getButtonBox().getChildren().addListener((ListChangeListener<? super Node>) (e) -> {
+            if (this.buttonBoxListenerEnabled) {
+                this.maximizeButton.setIndex(getButtonBox().getChildren().indexOf(this.maximizeButton));
+                applyMaximizeButtonPolicy();
+            }
+        });
+        getStage().resizableProperty().addListener((ov, oldV, newV) -> applyMaximizeButtonPolicy());
+        this.maximizeButton.policyProperty().addListener((ov, oldV, newV) -> applyMaximizeButtonPolicy());
     }
 
     private void addHandlers() {
@@ -94,13 +95,19 @@ public class StandardStageController extends SimpleStageController {
         });
     }
 
-    private void checkMaximizeButton() {
+    private void applyMaximizeButtonPolicy() {
         if (this.maximizeButton.getIndex() == -1) {
             return;
         }
         if (maximizeButton.getPolicy() == MaximizeButton.ResizableStatePolicy.INTERACTIVITY) {
             maximizeButton.setDisable(!getStage().isResizable());
+            //always visible
+            if (this.getMaximizeButton().getParent() != getButtonBox()) {
+                getButtonBox().getChildren().add(maximizeButton.getIndex(), maximizeButton);
+            }
         } else {
+            //always not disable
+            maximizeButton.setDisable(false);
             this.buttonBoxListenerEnabled = false;
             if (getStage().isResizable()) {
                 if (this.getMaximizeButton().getParent() != getButtonBox()) {
