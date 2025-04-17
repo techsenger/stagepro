@@ -17,7 +17,6 @@
 package com.techsenger.stagepro.core;
 
 import com.techsenger.toolkit.fx.Spacer;
-import javafx.beans.binding.Bindings;
 import javafx.collections.ListChangeListener;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -45,7 +44,6 @@ public class StandardStageController extends SimpleStageController {
     public StandardStageController(Stage stage, double width, double height, boolean initTitleBar) {
         super(stage, width, height, false);
         build();
-        bind();
         addListeners();
         addHandlers();
         if (initTitleBar) {
@@ -66,11 +64,6 @@ public class StandardStageController extends SimpleStageController {
         this.minimizeButton.getStyleClass().add("minimize-button");
         this.minimizeButton.getGraphic().getStyleClass().add("icon");
         maximizeButton.getGraphic().getStyleClass().add("icon");
-    }
-
-    private void bind() {
-        getResizer().disabledProperty().bind(getStage().maximizedProperty()
-                .or(Bindings.not(getStage().resizableProperty())));
     }
 
     private void addListeners() {

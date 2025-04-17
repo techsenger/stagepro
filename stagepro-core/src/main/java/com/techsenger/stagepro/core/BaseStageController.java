@@ -20,6 +20,7 @@ import com.techsenger.toolkit.fx.StageResizer;
 import com.techsenger.toolkit.fx.color.ColorUtils;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.beans.binding.Bindings;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -106,6 +107,7 @@ public class BaseStageController {
         this.width = width;
         this.height = height;
         build();
+        bind();
         addListeners();
         addHandlers();
     }
@@ -194,6 +196,11 @@ public class BaseStageController {
         this.buttonBox.getStyleClass().add("button-box");
         checkMaximizedPseudoClass(getStage().maximizedProperty().get());
         setEmptyContent();
+    }
+
+    private void bind() {
+        this.resizer.disabledProperty()
+                .bind(this.stage.maximizedProperty().or(Bindings.not(this.stage.resizableProperty())));
     }
 
     private void addListeners() {
