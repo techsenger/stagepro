@@ -17,7 +17,7 @@
 package com.techsenger.stagepro.sampler;
 
 import com.techsenger.stagepro.core.BaseStageController;
-import com.techsenger.stagepro.core.MaximizeButton;
+import com.techsenger.stagepro.core.MaximizeButton.ResizableStatePolicy;
 import com.techsenger.stagepro.core.SimpleStageController;
 import com.techsenger.stagepro.core.StageResizeEvent;
 import com.techsenger.stagepro.core.StandardStageController;
@@ -28,18 +28,22 @@ import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -49,9 +53,9 @@ import javafx.stage.Stage;
  */
 public class Sampler extends Application {
 
-    private static double SAMPLE_STAGE_WIDTH = 600;
+    private static final double SAMPLE_STAGE_WIDTH = 600;
 
-    private static double SAMPLE_STAGE_HEIGHT = 400;
+    private static final double SAMPLE_STAGE_HEIGHT = 400;
 
     public static void main(String[] args) {
         launch(args);
@@ -131,24 +135,16 @@ public class Sampler extends Application {
                 createSample2(),
                 createSample3(),
                 createSample4(),
-                createSample5(),
-                createSample6(),
-                createSample7()
+                createSample5()
         );
     }
 
     private Sample createSample1() {
-        return new Sample(1, BaseStageController.class.getSimpleName(), "Resize handlers", () -> {
+        return new Sample(1, BaseStageController.class.getSimpleName(), "Empty title bar", () -> {
             var stage = new Stage();
             var controller = new BaseStageController(stage, SAMPLE_STAGE_WIDTH, SAMPLE_STAGE_HEIGHT);
-            var button = new Button("Close");
-            button.setOnAction(e -> stage.close());
-            var content = new StackPane(button);
-            controller.setContent(content);
-            stage.addEventHandler(StageResizeEvent.STAGE_RESIZE_STARTED,
-                    e -> System.out.println("Resize started"));
-            stage.addEventHandler(StageResizeEvent.STAGE_RESIZE_FINISHED,
-                    e -> System.out.println("Resize finished"));
+            setStylesheet(controller);
+            setContent(controller);
             stage.show();
         });
     }
@@ -158,7 +154,9 @@ public class Sampler extends Application {
                 "Icon and text on the left, close button on the right", () -> {
             var stage = new Stage();
             var controller = new SimpleStageController(stage, SAMPLE_STAGE_WIDTH, SAMPLE_STAGE_HEIGHT);
-            setTitleAndCss(controller, false);
+            setTitle(controller);
+            setStylesheet(controller);
+            setContent(controller);
             stage.show();
         });
     }
@@ -168,25 +166,14 @@ public class Sampler extends Application {
                 "Icon and text on the left, three buttons on the right", () -> {
             var stage = new Stage();
             var controller = new StandardStageController(stage, SAMPLE_STAGE_WIDTH, SAMPLE_STAGE_HEIGHT);
-            setTitleAndCss(controller, false);
-            setStateTestContent(stage, controller);
+            setTitle(controller);
+            setStylesheet(controller);
+            setContent(controller);
             stage.show();
         });
     }
 
     private Sample createSample4() {
-        return new Sample(4, StandardStageController.class.getSimpleName(),
-                "Icon and text on the left, three buttons on the right, size effect",
-                () -> {
-            var stage = new Stage();
-            var controller = new StandardStageController(stage, SAMPLE_STAGE_WIDTH, SAMPLE_STAGE_HEIGHT);
-            setTitleAndCss(controller, false);
-            controller.setSizeEffectEnabled(true);
-            stage.show();
-        });
-    }
-
-    private Sample createSample5() {
         class LeftStandardStageController extends StandardStageController {
 
             LeftStandardStageController(Stage stage, double width, double height) {
@@ -196,31 +183,19 @@ public class Sampler extends Application {
                         new Spacer());
             }
         }
-        return new Sample(5, LeftStandardStageController.class.getSimpleName(),
+        return new Sample(4, LeftStandardStageController.class.getSimpleName(),
                 "Three buttons, text on the left", () -> {
             var stage = new Stage();
             var controller = new LeftStandardStageController(stage, SAMPLE_STAGE_WIDTH, SAMPLE_STAGE_HEIGHT);
-            setTitleAndCss(controller, false);
-            setStateTestContent(stage, controller);
+            setTitle(controller);
+            setStylesheet(controller);
+            setContent(controller);
             stage.show();
         });
     }
 
-    private Sample createSample6() {
-        return new Sample(6, StandardStageController.class.getSimpleName(),
-                "Icon and text on the left, three buttons on the right, dark theme",
-                () -> {
-            var stage = new Stage();
-            var controller = new StandardStageController(stage, SAMPLE_STAGE_WIDTH, SAMPLE_STAGE_HEIGHT);
-            setTitleAndCss(controller, true);
-            setStateTestContent(stage, controller);
-            stage.getScene().getStylesheets().add(Sampler.class.getResource("dark-theme.css").toExternalForm());
-            stage.show();
-        });
-    }
-
-    private Sample createSample7() {
-        return new Sample(7, StandardStageController.class.getSimpleName(),
+    private Sample createSample5() {
+        return new Sample(5, StandardStageController.class.getSimpleName(),
                 "Icon and menu on the left, three buttons on the right", () -> {
             var stage = new Stage();
             class LeftStandardStageController extends StandardStageController {
@@ -235,41 +210,88 @@ public class Sampler extends Application {
 
                 LeftStandardStageController(Stage stage, double width, double height) {
                     super(stage, width, height, false);
-                    this.menuBar.setStyle("-fx-background-color: #CCCCCC;-fx-padding: 0");
                     getButtonBox().getChildren().addAll(getMinimizeButton(), getMaximizeButton(), getCloseButton());
                     getTitleBar().getChildren().addAll(getIconView(), menuBar, new Spacer(), getButtonBox());
                 }
             }
             var controller = new LeftStandardStageController(stage, SAMPLE_STAGE_WIDTH, SAMPLE_STAGE_HEIGHT);
-            setTitleAndCss(controller, false);
-            setStateTestContent(stage, controller);
+            setTitle(controller);
+            setStylesheet(controller);
+            setContent(controller);
             stage.show();
         });
     }
 
-    private void setTitleAndCss(SimpleStageController controller, boolean dark) {
+    private void setTitle(SimpleStageController controller) {
         controller.getTitleLabel().setText("Title");
-        var cssFile = "light-theme.css";
-        if (dark) {
-            cssFile = "dark-theme.css";
-        }
-        controller.getStage().getScene().getStylesheets().add(Sampler.class.getResource(cssFile).toExternalForm());
+
     }
 
-    private void setStateTestContent(Stage stage, StandardStageController controller) {
-        var policyButton = new Button("Update max policy");
-        policyButton.setOnAction(e -> {
-            if (controller.getMaximizeButton().getPolicy() == MaximizeButton.ResizableStatePolicy.INTERACTIVITY) {
-                controller.getMaximizeButton().setPolicy(MaximizeButton.ResizableStatePolicy.VISIBILITY);
+    private void setStylesheet(BaseStageController controller) {
+        controller.getStage().getScene().getStylesheets().add(Sampler.class.getResource("sample.css").toExternalForm());
+    }
+
+    private void setContent(BaseStageController controller) {
+        var stage = controller.getStage();
+        var gridPane = new GridPane();
+        gridPane.setHgap(10);
+        gridPane.setVgap(10);
+        gridPane.setMaxSize(Region.USE_PREF_SIZE, Region.USE_PREF_SIZE);
+
+        var rowIndex = 0;
+        if (controller.getClass() == BaseStageController.class) {
+            var button = new Button("Close");
+            button.setMaxWidth(Double.MAX_VALUE);
+            button.setOnAction(e -> stage.close());
+            GridPane.setHgrow(button, Priority.ALWAYS);
+            GridPane.setColumnSpan(button, 2);
+            gridPane.add(button, 0, rowIndex);
+            rowIndex++;
+        }
+        if (controller instanceof StandardStageController) {
+            gridPane.add(new Label("Max Button Policy"), 0, rowIndex);
+            var polcies = FXCollections.observableArrayList(ResizableStatePolicy.VISIBILITY,
+                    ResizableStatePolicy.INTERACTIVITY);
+            var policyComboBox = new ComboBox<ResizableStatePolicy>(polcies);
+            var maxButton = ((StandardStageController) controller).getMaximizeButton();
+            policyComboBox.valueProperty().bindBidirectional(maxButton.policyProperty());
+            gridPane.add(policyComboBox, 1, rowIndex);
+            rowIndex++;
+        }
+
+        var resizableCheckBox = new CheckBox("Resizable");
+        resizableCheckBox.selectedProperty().bindBidirectional(stage.resizableProperty());
+        gridPane.add(resizableCheckBox, 0, rowIndex);
+        var darkThemeCheckBox = new CheckBox("Dark Theme");
+        darkThemeCheckBox.selectedProperty().addListener((ov, oldV, newV) -> {
+            if (newV) {
+                controller.getStage().getScene().getRoot().getStyleClass().add("dark");
             } else {
-                controller.getMaximizeButton().setPolicy(MaximizeButton.ResizableStatePolicy.INTERACTIVITY);
+                controller.getStage().getScene().getRoot().getStyleClass().remove("dark");
             }
         });
-        var resizableButton = new Button("Update resizable");
-        resizableButton.setOnAction(e -> stage.setResizable(!stage.isResizable()));
-        var content = new HBox(policyButton, resizableButton);
-        content.setAlignment(Pos.CENTER);
-        content.setSpacing(10);
+        gridPane.add(darkThemeCheckBox, 1, rowIndex);
+
+        rowIndex++;
+        EventHandler<StageResizeEvent> started = e -> System.out.println("Resize started");
+        EventHandler<StageResizeEvent> finished = e -> System.out.println("Resize finished");
+        var resizeHandlersCheckBox = new CheckBox("Resize Handlers");
+        resizeHandlersCheckBox.selectedProperty().addListener((ov, oldV, newV) -> {
+            if (newV) {
+                stage.addEventHandler(StageResizeEvent.STAGE_RESIZE_STARTED, started);
+                stage.addEventHandler(StageResizeEvent.STAGE_RESIZE_FINISHED, finished);
+            } else {
+                stage.removeEventHandler(StageResizeEvent.STAGE_RESIZE_STARTED, started);
+                stage.removeEventHandler(StageResizeEvent.STAGE_RESIZE_FINISHED, finished);
+            }
+        });
+        gridPane.add(resizeHandlersCheckBox, 0, rowIndex);
+        var sizeEffectCheckBox = new CheckBox("Size Effect");
+        sizeEffectCheckBox.selectedProperty().bindBidirectional(controller.sizeEffectEnabledProperty());
+        gridPane.add(sizeEffectCheckBox, 1, rowIndex);
+
+        var content = new BorderPane();
+        content.setCenter(gridPane);
         controller.setContent(content);
     }
 

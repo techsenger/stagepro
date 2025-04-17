@@ -18,22 +18,42 @@
     Author     : Pavel Castornii
 */
 
-.stage-box > .title-bar {
+.stage-box > .title-bar > .icon-view {
+     -fx-image: url("icon-light.png");
+}
+
+.stage-box > .title-bar > .menu-bar {
+    -fx-background-color: #CCCCCC;
+}
+
+.stage-box > .title-bar > .menu-bar >.container {
+    -fx-padding: 0;
+}
+
+.stage-box.dark > .title-bar {
     -fx-background-color: #000030;
 }
 
-.stage-box > .title-bar > .icon-view {
-     -fx-image: url("icon-dark.png");
+.stage-box.dark > .title-bar > .menu-bar {
+    -fx-background-color: #000030;
 }
 
-.stage-box > .title-bar > .title-label {
+.stage-box.dark > .title-bar > .menu-bar .label {
     -fx-text-fill: #ffffff;
 }
 
-.stage-box > .title-bar > .button-box > .button {
+.stage-box.dark > .title-bar > .icon-view {
+     -fx-image: url("icon-dark.png");
+}
+
+.stage-box.dark > .title-bar > .title-label {
+    -fx-text-fill: #ffffff;
+}
+
+.stage-box.dark > .title-bar > .button-box > .button {
     -fx-background-color: #000060;
 }
 
-.stage-box > .title-bar > .button-box > .button > .icon {
+.stage-box.dark > .title-bar > .button-box > .button > .icon {
     -fx-background-color: #ffffff;
 }
