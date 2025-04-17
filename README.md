@@ -2,13 +2,17 @@
 
 | Support the Project! |
 |:-------------|
-| This project is open-source and free to use, both commercially and non-commercially, which is why we need your help in its development. If you like it, please give it a star ⭐ on GitHub — it helps others discover the project and increases its visibility. You can also contribute, for example, by fixing bugs 🐛 or suggesting improvements 💡, see [Contributing](#contributing). If you can, financial support 💰 is always appreciated, see [Support Us](#support-us). Thank you for your support! |
+| This project is open-source and free to use, both commercially and non-commercially, which is why we need your help in its development. If you like it, please give it a star ⭐ on GitHub — it helps others discover the project and increases its visibility. You can also contribute, for example, by fixing bugs 🐛 or suggesting improvements 💡, see [Contributing](#contributing). If you can, financial support 💰 is always appreciated, see [Support Us](#support-us). Thank you! |
 
 ## Table of Contents
 * [Overview](#overview)
 * [Demo](#demo)
+    * [Light Theme](#demo-light-theme)
+    * [Dark Theme](#demo-dark-theme)
 * [Features](#features)
+* [Limitations](#limitations)
 * [Requirements](#requirements)
+* [JavaFX Issues](#javafx-issues)
 * [Dependencies](#dependencies)
 * [Usage](#usage)
 * [Code building](#code-building)
@@ -24,7 +28,13 @@ easy to use. The project also includes a sampler module, featuring key samples t
 
 ## Demo <a name="demo"></a>
 
-![StagePro Demo](./demo.png)
+### Light Theme <a name="demo-light-theme"></a>
+
+
+
+### Dark Theme <a name="demo-dark-theme"></a>
+
+
 
 ## Features <a name="features"></a>
 
@@ -36,15 +46,23 @@ Key features include:
 * Two policies for the maximize button.
 * Styling with CSS.
 * Dark mode support.
-* Size effect (disabled by default).
 * Only two events triggered during resizing (start and finish).
 
-Currently, shadow for Stage is not supported, as it seems there is no way to set a shadow around a Stage using JavaFX.
-It is likely that this can only be achieved using native code.
+## Limitations <a name="limitations"></a>
+
+* No shadow support. Currently, shadows for Stage are not supported as JavaFX provides no built-in way to render
+shadows around transparent windows. This would likely require platform-specific native code.
+* No native window management features. Edge-based behaviors like Windows Snap Layouts and GNOME Edge Tiling cannot
+be properly implemented with JavaFX transparent windows.
 
 ## Requirements <a name="requirements"></a>
 
 Due to some bugs, use JavaFX versions 16–20, or a version of JavaFX after 24-ea+19 (see JDK-8344372).
+
+## JavaFX Issues <a name="javafx-issues"></a>
+
+* [JDK-8347155](https://bugs.openjdk.org/browse/JDK-8347155). If you try to resize the stage using the top or left
+border, the opposite side will jitter.
 
 ## Dependencies <a name="dependencies"></a>
 
