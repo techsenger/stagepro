@@ -30,11 +30,11 @@ easy to use. The project also includes a sampler module, featuring key samples t
 
 ### Light Theme <a name="demo-light-theme"></a>
 
-
+![stagepro-1.1-light](https://github.com/user-attachments/assets/ceee91fd-f43d-4193-adda-4ff0e70b0d8a)
 
 ### Dark Theme <a name="demo-dark-theme"></a>
 
-
+![stagepro-1.1-dark](https://github.com/user-attachments/assets/3fc4a59d-a745-4b99-bce5-d6d7cfa152c0)
 
 ## Features <a name="features"></a>
 
