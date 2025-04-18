@@ -11,7 +11,6 @@
     * [Dark Theme](#demo-dark-theme)
 * [Features](#features)
 * [Limitations](#limitations)
-* [Requirements](#requirements)
 * [JavaFX Issues](#javafx-issues)
 * [Dependencies](#dependencies)
 * [Usage](#usage)
@@ -30,11 +29,11 @@ easy to use. The project also includes a sampler module, featuring key samples t
 
 ### Light Theme <a name="demo-light-theme"></a>
 
-![stagepro-1.1-light](https://github.com/user-attachments/assets/ceee91fd-f43d-4193-adda-4ff0e70b0d8a)
+![stagepro-light-theme](https://github.com/user-attachments/assets/ceee91fd-f43d-4193-adda-4ff0e70b0d8a)
 
 ### Dark Theme <a name="demo-dark-theme"></a>
 
-![stagepro-1.1-dark](https://github.com/user-attachments/assets/3fc4a59d-a745-4b99-bce5-d6d7cfa152c0)
+![stagepro-dark-theme](https://github.com/user-attachments/assets/3fc4a59d-a745-4b99-bce5-d6d7cfa152c0)
 
 ## Features <a name="features"></a>
 
@@ -43,9 +42,10 @@ Key features include:
 * Fully customizable title bar configurations.
 * Support for dynamic configuration changes.
 * Ability to place basic buttons on either the left or right side.
-* Two policies for the maximize button.
-* Styling with CSS.
+* Two maximize button policies.
+* Styling via CSS.
 * Dark mode support.
+* SVG-based button icons.
 * Only two events triggered during resizing (start and finish).
 
 ## Limitations <a name="limitations"></a>
@@ -53,16 +53,12 @@ Key features include:
 * No shadow support. Currently, shadows for Stage are not supported as JavaFX provides no built-in way to render
 shadows around transparent windows. This would likely require platform-specific native code.
 * No native window management features. Edge-based behaviors like Windows Snap Layouts and GNOME Edge Tiling cannot
-be properly implemented with JavaFX transparent windows.
-
-## Requirements <a name="requirements"></a>
-
-Due to some bugs, use JavaFX versions 16–20, or a version of JavaFX after 24-ea+19 (see JDK-8344372).
+be properly implemented using Java alone. These features also require platform-specific native code.
 
 ## JavaFX Issues <a name="javafx-issues"></a>
 
-* [JDK-8347155](https://bugs.openjdk.org/browse/JDK-8347155). If you try to resize the stage using the top or left
-border, the opposite side will jitter.
+* Use JavaFX 16–20 or versions after 24-ea+19 due to known bugs ([JDK-8344372](https://bugs.openjdk.org/browse/JDK-8344372)).
+* Resizing the stage via the top/left border causes jitter on the opposite side ([JDK-8347155](https://bugs.openjdk.org/browse/JDK-8347155)).
 
 ## Dependencies <a name="dependencies"></a>
 
